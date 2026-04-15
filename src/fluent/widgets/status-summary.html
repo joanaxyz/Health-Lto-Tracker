@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel text-center" style="background:#28a745;color:#fff;padding:20px;cursor:pointer;" ng-click="goToActive()">
+      <h2 ng-bind="active"></h2>
+      <p>Active Licenses</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel text-center" style="background:#fd7e14;color:#fff;padding:20px;cursor:pointer;" ng-click="goToExpiringSoon()">
+      <h2 ng-bind="expiring_soon"></h2>
+      <p>Expiring Soon</p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel text-center" style="background:#dc3545;color:#fff;padding:20px;cursor:pointer;" ng-click="goToExpired()">
+      <h2 ng-bind="expired"></h2>
+      <p>Expired Licenses</p>
+    </div>
+  </div>
+</div>

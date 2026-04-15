@@ -1,0 +1,28 @@
+<div>
+  <h4>Recent Alerts (Last 30 Days)</h4>
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <th>License Number</th>
+        <th>Facility</th>
+        <th>License Type</th>
+        <th>Days Before Expiry</th>
+        <th>Sent At</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="alert in alerts"
+          ng-click="openLicense(alert.license_sys_id)"
+          style="cursor:pointer;">
+        <td ng-bind="alert.license_number"></td>
+        <td ng-bind="alert.facility"></td>
+        <td ng-bind="alert.license_type"></td>
+        <td ng-bind="alert.days_before_expiry"></td>
+        <td ng-bind="alert.sent_at"></td>
+      </tr>
+      <tr ng-if="alerts.length === 0">
+        <td colspan="5" class="text-center text-muted">No alerts in the last 30 days.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
