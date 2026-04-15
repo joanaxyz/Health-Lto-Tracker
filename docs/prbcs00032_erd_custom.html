@@ -1,0 +1,192 @@
+
+<style>
+  .erd-wrap { padding: 1.5rem 0; overflow-x: auto; }
+  .erd-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: auto;
+    gap: 24px 32px;
+    width: fit-content;
+    margin: 0 auto;
+    position: relative;
+  }
+  .entity {
+    border: 1.5px solid var(--color-border-primary);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 12px;
+    background: var(--color-background-secondary);
+  }
+  .entity-header {
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-background-primary);
+    letter-spacing: 0.01em;
+  }
+  .entity-header.blue   { background: #185FA5; }
+  .entity-header.teal   { background: #0F6E56; }
+  .entity-header.amber  { background: #854F0B; }
+  .entity-header.coral  { background: #993C1D; }
+  .entity-header.purple { background: #534AB7; }
+  .entity-header.green  { background: #3B6D11; }
+  .entity-header.pink   { background: #993556; }
+
+  .entity-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-top: 1px solid var(--color-border-tertiary);
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+  .entity-row .dtype {
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+    min-width: 52px;
+    font-family: var(--font-mono);
+  }
+  .entity-row .fname { color: var(--color-text-primary); font-size: 12px; flex: 1; }
+  .badge {
+    font-size: 9px;
+    font-weight: 500;
+    padding: 1px 4px;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
+  }
+  .pk { background: #E6F1FB; color: #185FA5; }
+  .fk { background: #FAEEDA; color: #854F0B; }
+
+  .rel-section {
+    margin-top: 28px;
+    border-top: 1px solid var(--color-border-tertiary);
+    padding-top: 16px;
+  }
+  .rel-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .rel-list { display: flex; flex-direction: column; gap: 6px; }
+  .rel-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+  .rel-from { font-weight: 500; color: var(--color-text-primary); min-width: 110px; }
+  .rel-arrow { color: var(--color-text-tertiary); font-size: 11px; }
+  .rel-to { font-weight: 500; color: var(--color-text-primary); min-width: 110px; }
+  .rel-label { color: var(--color-text-tertiary); font-size: 11px; font-style: italic; }
+  .card-wrap { font-size: 11px; color: var(--color-text-tertiary); min-width: 60px; text-align: center; }
+</style>
+
+<div class="erd-wrap">
+  <div class="erd-grid">
+
+    <!-- FACILITY -->
+    <div class="entity" style="grid-column:2; grid-row:1;">
+      <div class="entity-header blue">FACILITY</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">name</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">doh_license_number</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">facility_type</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">address</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">compliance_officer_id</span><span class="badge fk">FK</span></div>
+    </div>
+
+    <!-- USER -->
+    <div class="entity" style="grid-column:4; grid-row:1;">
+      <div class="entity-header teal">USER</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">full_name</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">email</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">password_hash</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">role</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">created_at</span></div>
+    </div>
+
+    <!-- LICENSE -->
+    <div class="entity" style="grid-column:2; grid-row:2;">
+      <div class="entity-header amber">LICENSE</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">facility_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">license_type</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">license_number</span></div>
+      <div class="entity-row"><span class="dtype">date</span><span class="fname">issue_date</span></div>
+      <div class="entity-row"><span class="dtype">date</span><span class="fname">expiry_date</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">status</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">renewal_stage</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">created_at</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">updated_at</span></div>
+    </div>
+
+    <!-- ALERT -->
+    <div class="entity" style="grid-column:1; grid-row:3;">
+      <div class="entity-header coral">ALERT</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">license_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">int</span><span class="fname">days_before_expiry</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">channel</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">status</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">sent_at</span></div>
+    </div>
+
+    <!-- FORM_CHECKLIST -->
+    <div class="entity" style="grid-column:2; grid-row:3;">
+      <div class="entity-header purple">FORM_CHECKLIST</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">license_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">form_name</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">purpose</span></div>
+      <div class="entity-row"><span class="dtype">boolean</span><span class="fname">is_completed</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">completed_at</span></div>
+    </div>
+
+    <!-- EVIDENCE_FILE -->
+    <div class="entity" style="grid-column:3; grid-row:3;">
+      <div class="entity-header green">EVIDENCE_FILE</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">license_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">file_name</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">file_url</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">file_type</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">uploaded_by</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">uploaded_at</span></div>
+    </div>
+
+    <!-- AUDIT_LOG -->
+    <div class="entity" style="grid-column:4; grid-row:3;">
+      <div class="entity-header pink">AUDIT_LOG</div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">id</span><span class="badge pk">PK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">user_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">uuid</span><span class="fname">license_id</span><span class="badge fk">FK</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">action</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">field_changed</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">old_value</span></div>
+      <div class="entity-row"><span class="dtype">string</span><span class="fname">new_value</span></div>
+      <div class="entity-row"><span class="dtype">timestamp</span><span class="fname">changed_at</span></div>
+    </div>
+
+  </div>
+
+  <!-- Relationships legend -->
+  <div class="rel-section" style="max-width:860px; margin: 28px auto 0;">
+    <div class="rel-title">Relationships</div>
+    <div class="rel-list">
+      <div class="rel-row"><span class="rel-from">FACILITY</span><span class="rel-arrow">||——o{</span><span class="rel-to">LICENSE</span><span class="rel-label">one facility has many licenses</span></div>
+      <div class="rel-row"><span class="rel-from">FACILITY</span><span class="rel-arrow">}o——||</span><span class="rel-to">USER</span><span class="rel-label">many facilities assigned to one compliance officer</span></div>
+      <div class="rel-row"><span class="rel-from">LICENSE</span><span class="rel-arrow">||——o{</span><span class="rel-to">ALERT</span><span class="rel-label">one license triggers many alerts</span></div>
+      <div class="rel-row"><span class="rel-from">LICENSE</span><span class="rel-arrow">||——o{</span><span class="rel-to">FORM_CHECKLIST</span><span class="rel-label">one license requires many forms</span></div>
+      <div class="rel-row"><span class="rel-from">LICENSE</span><span class="rel-arrow">||——o{</span><span class="rel-to">EVIDENCE_FILE</span><span class="rel-label">one license holds many files</span></div>
+      <div class="rel-row"><span class="rel-from">LICENSE</span><span class="rel-arrow">||——o{</span><span class="rel-to">AUDIT_LOG</span><span class="rel-label">one license has many log entries</span></div>
+      <div class="rel-row"><span class="rel-from">USER</span><span class="rel-arrow">||——o{</span><span class="rel-to">AUDIT_LOG</span><span class="rel-label">one user performs many actions</span></div>
+      <div class="rel-row"><span class="rel-from">USER</span><span class="rel-arrow">||——o{</span><span class="rel-to">EVIDENCE_FILE</span><span class="rel-label">one user uploads many files</span></div>
+    </div>
+  </div>
+</div>

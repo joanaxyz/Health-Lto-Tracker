@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LTO Tracker — Component Diagram</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    background: #ffffff;
+    color: #111111;
+    padding: 40px 48px 60px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 4px;
+    border-bottom: 2px solid #111;
+    padding-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 36px;
+  }
+
+  /* ── Section headings ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 10px;
+    margin-top: 36px;
+  }
+
+  /* ══════════════════════════════════════════
+     LAYER LAYOUT
+  ══════════════════════════════════════════ */
+  .layer {
+    border: 1px solid #999;
+    border-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .layer-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #333;
+    background: #fff;
+    position: absolute;
+    top: -9px;
+    left: 14px;
+    padding: 0 6px;
+  }
+
+  .layer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+  }
+
+  /* ══════════════════════════════════════════
+     BOXES
+  ══════════════════════════════════════════ */
+  .box {
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 8px 12px;
+    min-width: 140px;
+    background: #fff;
+  }
+
+  .box-title {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .box-sub {
+    font-size: 10px;
+    color: #555;
+  }
+
+  .box.shaded {
+    background: #f0f0f0;
+  }
+
+  .box.bold-border {
+    border-width: 2px;
+    border-color: #111;
+  }
+
+  /* ══════════════════════════════════════════
+     CONNECTOR ARROWS (pure CSS — flex column)
+  ══════════════════════════════════════════ */
+  .connector-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 4px 0;
+  }
+
+  .arrow-down {
+    width: 1px;
+    height: 18px;
+    background: #555;
+    position: relative;
+  }
+
+  .arrow-down::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: -4px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 6px solid #555;
+  }
+
+  .arrow-label {
+    font-size: 9px;
+    color: #444;
+    letter-spacing: 0.05em;
+    margin: 2px 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ══════════════════════════════════════════
+     DATA MODEL TABLE
+  ══════════════════════════════════════════ */
+  .dm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .table-card {
+    border: 1px solid #555;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .table-card-header {
+    background: #222;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .table-card-body {
+    padding: 6px 10px 8px;
+    background: #fff;
+  }
+
+  .field-row {
+    display: flex;
+    gap: 6px;
+    font-size: 10px;
+    padding: 1px 0;
+    border-bottom: 1px dotted #ddd;
+    align-items: baseline;
+  }
+
+  .field-row:last-child { border-bottom: none; }
+
+  .field-name {
+    font-weight: 600;
+    flex: 1;
+    color: #111;
+  }
+
+  .field-type {
+    color: #555;
+    font-style: italic;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  .field-badge {
+    font-size: 8px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 2px;
+    color: #fff;
+    background: #444;
+    letter-spacing: 0.06em;
+  }
+
+  .field-badge.pk { background: #111; }
+  .field-badge.fk { background: #888; }
+
+  /* ══════════════════════════════════════════
+     RELATIONSHIPS TABLE
+  ══════════════════════════════════════════ */
+  .rel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  .rel-table th {
+    text-align: left;
+    border-bottom: 2px solid #111;
+    padding: 4px 10px 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #333;
+  }
+
+  .rel-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  .rel-table tr:last-child td { border-bottom: none; }
+
+  .rel-table td:first-child { font-weight: 700; }
+  .rel-table td:nth-child(2) { color: #444; font-style: italic; text-align: center; }
+  .rel-table td:nth-child(3) { font-weight: 700; }
+  .rel-table td:last-child { color: #555; }
+
+  /* ══════════════════════════════════════════
+     AUTOMATION TABLE
+  ══════════════════════════════════════════ */
+  .auto-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  .auto-table th {
+    text-align: left;
+    border-bottom: 2px solid #111;
+    padding: 4px 10px 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .auto-table td {
+    padding: 5px 10px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+  }
+
+  .auto-table tr:last-child td { border-bottom: none; }
+  .auto-table td:first-child { font-weight: 700; font-family: "Courier New", monospace; font-size: 10px; }
+
+  /* ══════════════════════════════════════════
+     FLOW DIAGRAM
+  ══════════════════════════════════════════ */
+  .flow-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .flow-node {
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 110px;
+    background: #fff;
+  }
+
+  .flow-node.decision {
+    background: #f0f0f0;
+    border-style: dashed;
+  }
+
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    font-size: 18px;
+    color: #555;
+    font-weight: 300;
+  }
+
+  .flow-arrow-label {
+    font-size: 9px;
+    color: #555;
+    margin: 0 4px;
+  }
+
+  /* ══════════════════════════════════════════
+     ROLE TABLE
+  ══════════════════════════════════════════ */
+  .role-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+  }
+
+  .role-table th {
+    text-align: left;
+    border-bottom: 2px solid #111;
+    padding: 4px 8px 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .role-table td {
+    padding: 4px 8px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .role-table td:first-child,
+  .role-table td:nth-child(2) {
+    text-align: left;
+  }
+
+  .role-table tr:last-child td { border-bottom: none; }
+
+  .check { font-size: 13px; }
+  .cross { font-size: 13px; color: #aaa; }
+
+  /* ══════════════════════════════════════════
+     FOOTER / LEGEND
+  ══════════════════════════════════════════ */
+  .legend {
+    margin-top: 36px;
+    border-top: 1px solid #ccc;
+    padding-top: 12px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 10px;
+    color: #555;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #555;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .legend-swatch.shaded { background: #f0f0f0; }
+  .legend-swatch.dark { background: #222; }
+  .legend-swatch.plain { background: #fff; }
+</style>
+</head>
+<body>
+
+<h1>Health Online LTO &amp; Ancillary Licensing Tracker</h1>
+<div class="subtitle">PRBCS00032 &nbsp;·&nbsp; ServiceNow Component Diagram &nbsp;·&nbsp; Scope: x_lto_tracker &nbsp;·&nbsp; v1.0 &nbsp;·&nbsp; April 2026</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 1: SYSTEM LAYERS
+═══════════════════════════════════════════════ -->
+<div class="section-label">1 &mdash; System Layers</div>
+
+<div class="layer">
+  <span class="layer-title">Presentation Layer — ServiceNow UI</span>
+  <div class="layer-inner">
+    <div class="box">
+      <div class="box-title">Service Portal</div>
+      <div class="box-sub">lto_dashboard page<br>3 Widgets (Status, Expiring, Alerts)</div>
+    </div>
+    <div class="box">
+      <div class="box-title">Application Navigator</div>
+      <div class="box-sub">App Menu: LTO Tracker<br>Modules: Facilities, Licenses, Alerts, Audit Log</div>
+    </div>
+    <div class="box">
+      <div class="box-title">Form Designer</div>
+      <div class="box-sub">Facility Form<br>License Form<br>Checklist Inline Edit</div>
+    </div>
+    <div class="box">
+      <div class="box-title">List Views</div>
+      <div class="box-sub">All Licenses<br>Expiring Soon<br>Expired<br>All Alerts</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:center;">
+  <div class="connector-col">
+    <div class="arrow-down" style="height:16px;"></div>
+  </div>
+</div>
+
+<div class="layer">
+  <span class="layer-title">Application Logic Layer — ServiceNow Platform Scripts</span>
+  <div class="layer-inner">
+    <div class="box shaded">
+      <div class="box-title">Business Rules (6)</div>
+      <div class="box-sub">BR-F-01: Dup license number<br>BR-L-01: Status computation<br>BR-L-02: Checklist auto-create<br>BR-L-03: Stage forward-only<br>BR-L-04: Expiry on Released<br>BR-L-05: Audit log on stage<br>BR-C-01: Checklist timestamp</div>
+    </div>
+    <div class="box shaded">
+      <div class="box-title">Scheduled Job</div>
+      <div class="box-sub">Daily Alert Generator<br>Run: 06:00 PHT<br>Thresholds: 90/60/30/7 days<br>Deduplication enforced</div>
+    </div>
+    <div class="box shaded">
+      <div class="box-title">Client Scripts (2)</div>
+      <div class="box-sub">CS-01: File size validation<br>CS-02: Stage change dialog</div>
+    </div>
+    <div class="box shaded">
+      <div class="box-title">UI Policies (4)</div>
+      <div class="box-sub">Status → read-only<br>Days Before Expiry → read-only<br>Checklist % → read-only<br>Completed At → read-only</div>
+    </div>
+    <div class="box shaded">
+      <div class="box-title">Email Notification</div>
+      <div class="box-sub">Trigger: Alert insert<br>Recipient: Compliance Officer<br>Content: License + expiry details</div>
+    </div>
+    <div class="box shaded">
+      <div class="box-title">ACLs</div>
+      <div class="box-sub">Role: x_lto_tracker.admin<br>Role: x_lto_tracker.viewer<br>Audit Log: read-only for all<br>Computed fields: no write</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:center;">
+  <div class="connector-col">
+    <div class="arrow-down" style="height:16px;"></div>
+  </div>
+</div>
+
+<div class="layer">
+  <span class="layer-title">Data Layer — ServiceNow Tables (Scoped)</span>
+  <div class="layer-inner">
+    <div class="box bold-border">
+      <div class="box-title">x_lto_tracker_facility</div>
+      <div class="box-sub">Core entity</div>
+    </div>
+    <div class="box bold-border">
+      <div class="box-title">x_lto_tracker_license</div>
+      <div class="box-sub">Core entity</div>
+    </div>
+    <div class="box">
+      <div class="box-title">x_lto_tracker_alert</div>
+      <div class="box-sub">Child of license</div>
+    </div>
+    <div class="box">
+      <div class="box-title">x_lto_tracker_form_checklist</div>
+      <div class="box-sub">Child of license</div>
+    </div>
+    <div class="box">
+      <div class="box-title">x_lto_tracker_evidence_file</div>
+      <div class="box-sub">Child of license</div>
+    </div>
+    <div class="box">
+      <div class="box-title">x_lto_tracker_audit_log</div>
+      <div class="box-sub">Immutable. Child of license &amp; facility</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:flex;justify-content:center;">
+  <div class="connector-col">
+    <div class="arrow-down" style="height:16px;"></div>
+  </div>
+</div>
+
+<div class="layer">
+  <span class="layer-title">Platform Layer — ServiceNow Infrastructure</span>
+  <div class="layer-inner">
+    <div class="box">
+      <div class="box-title">GlideRecord API</div>
+      <div class="box-sub">All DB access</div>
+    </div>
+    <div class="box">
+      <div class="box-title">sys_attachment</div>
+      <div class="box-sub">Evidence file storage</div>
+    </div>
+    <div class="box">
+      <div class="box-title">sys_user</div>
+      <div class="box-sub">User accounts &amp; roles</div>
+    </div>
+    <div class="box">
+      <div class="box-title">SMTP / Email Engine</div>
+      <div class="box-sub">Outbound alert emails</div>
+    </div>
+    <div class="box">
+      <div class="box-title">History Sets</div>
+      <div class="box-sub">Platform-native field audit</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 2: DATA MODEL
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">2 &mdash; Data Model</div>
+
+<div class="dm-grid">
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_facility</div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-name">name</span><span class="field-type">String 200</span></div>
+      <div class="field-row"><span class="field-name">doh_license_number</span><span class="field-type">String 50</span></div>
+      <div class="field-row"><span class="field-name">facility_type</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-name">address</span><span class="field-type">String 500</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">compliance_officer_id</span><span class="field-type">→ sys_user</span></div>
+      <div class="field-row"><span class="field-name">active</span><span class="field-type">Boolean</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_license</div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">facility_id</span><span class="field-type">→ facility</span></div>
+      <div class="field-row"><span class="field-name">license_number</span><span class="field-type">String 100</span></div>
+      <div class="field-row"><span class="field-name">license_type</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-name">issue_date</span><span class="field-type">Date</span></div>
+      <div class="field-row"><span class="field-name">expiry_date</span><span class="field-type">Date</span></div>
+      <div class="field-row"><span class="field-name">status</span><span class="field-type">Choice [computed]</span></div>
+      <div class="field-row"><span class="field-name">renewal_stage</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-name">days_before_expiry</span><span class="field-type">Integer [computed]</span></div>
+      <div class="field-row"><span class="field-name">checklist_pct</span><span class="field-type">Integer [computed]</span></div>
+      <div class="field-row"><span class="field-name">notes</span><span class="field-type">String 1000</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_alert</div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">license_id</span><span class="field-type">→ license</span></div>
+      <div class="field-row"><span class="field-name">days_before_expiry</span><span class="field-type">Integer</span></div>
+      <div class="field-row"><span class="field-name">channel</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-name">status</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-name">sent_at</span><span class="field-type">DateTime</span></div>
+      <div class="field-row"><span class="field-name">alert_date</span><span class="field-type">Date [dedup key]</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_form_checklist</div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">license_id</span><span class="field-type">→ license</span></div>
+      <div class="field-row"><span class="field-name">form_name</span><span class="field-type">String 300</span></div>
+      <div class="field-row"><span class="field-name">purpose</span><span class="field-type">String 500</span></div>
+      <div class="field-row"><span class="field-name">is_completed</span><span class="field-type">Boolean</span></div>
+      <div class="field-row"><span class="field-name">completed_at</span><span class="field-type">DateTime</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">completed_by</span><span class="field-type">→ sys_user</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_evidence_file</div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">license_id</span><span class="field-type">→ license</span></div>
+      <div class="field-row"><span class="field-name">file_name</span><span class="field-type">String 300</span></div>
+      <div class="field-row"><span class="field-name">attachment_sys_id</span><span class="field-type">String 32</span></div>
+      <div class="field-row"><span class="field-name">file_type</span><span class="field-type">Choice</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">uploaded_by</span><span class="field-type">→ sys_user</span></div>
+      <div class="field-row"><span class="field-name">uploaded_at</span><span class="field-type">DateTime</span></div>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="table-card-header">x_lto_tracker_audit_log &nbsp;<span style="font-weight:300;font-size:9px;">[immutable]</span></div>
+    <div class="table-card-body">
+      <div class="field-row"><span class="field-badge pk">PK</span><span class="field-name">sys_id</span><span class="field-type">GUID</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">user_id</span><span class="field-type">→ sys_user</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">license_id</span><span class="field-type">→ license</span></div>
+      <div class="field-row"><span class="field-badge fk">FK</span><span class="field-name">facility_id</span><span class="field-type">→ facility</span></div>
+      <div class="field-row"><span class="field-name">action</span><span class="field-type">String 100</span></div>
+      <div class="field-row"><span class="field-name">field_changed</span><span class="field-type">String 100</span></div>
+      <div class="field-row"><span class="field-name">old_value</span><span class="field-type">String 1000</span></div>
+      <div class="field-row"><span class="field-name">new_value</span><span class="field-type">String 1000</span></div>
+      <div class="field-row"><span class="field-name">changed_at</span><span class="field-type">DateTime</span></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 3: RELATIONSHIPS
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">3 &mdash; Table Relationships</div>
+
+<table class="rel-table">
+  <thead>
+    <tr>
+      <th>Parent Table</th>
+      <th>Cardinality</th>
+      <th>Child Table</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>x_lto_tracker_facility</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_license</td>
+      <td>One facility holds many licenses (DOH LTO + OLRS variations)</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_facility</td>
+      <td>N ──── 1</td>
+      <td>sys_user</td>
+      <td>Many facilities assigned to one compliance officer</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_license</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_alert</td>
+      <td>One license triggers many alerts (at 90/60/30/7 day thresholds)</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_license</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_form_checklist</td>
+      <td>One license has a set of required documentary forms</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_license</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_evidence_file</td>
+      <td>One license holds many attached evidence files</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_license</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_audit_log</td>
+      <td>One license has many audit log entries</td>
+    </tr>
+    <tr>
+      <td>x_lto_tracker_facility</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_audit_log</td>
+      <td>One facility has many audit log entries</td>
+    </tr>
+    <tr>
+      <td>sys_user</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_audit_log</td>
+      <td>One user performs many recorded actions</td>
+    </tr>
+    <tr>
+      <td>sys_user</td>
+      <td>1 ──── N</td>
+      <td>x_lto_tracker_evidence_file</td>
+      <td>One user uploads many files</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 4: ALERT FLOW
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">4 &mdash; Alert Automation Flow (Daily Scheduled Job)</div>
+
+<div class="flow-wrap" style="align-items:center;">
+  <div class="flow-node">Scheduled Job<br><span style="font-weight:400;font-size:10px;">06:00 PHT daily</span></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Query all Licenses<br><span style="font-weight:400;font-size:10px;">status ≠ Expired<br>stage ≠ Released</span></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node decision">days_before_expiry<br>= 90, 60, 30, or 7?</div>
+  <div class="flow-arrow"><span style="font-size:11px;">Yes →</span></div>
+  <div class="flow-node decision">Duplicate<br>alert today?</div>
+  <div class="flow-arrow"><span style="font-size:11px;">No →</span></div>
+  <div class="flow-node">Create Alert Record</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Email Notification<br>Triggered</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Email sent to<br>Compliance Officer</div>
+</div>
+
+<div style="margin-top:8px;font-size:10px;color:#555;">
+  &nbsp;&nbsp;&nbsp;If "Duplicate alert today?" = Yes → skip record, continue loop.<br>
+  &nbsp;&nbsp;&nbsp;If "days_before_expiry" does not match threshold → skip record, continue loop.
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 5: RENEWAL STAGE PIPELINE
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">5 &mdash; Renewal Stage Pipeline (Forward-Only)</div>
+
+<div class="flow-wrap" style="align-items:center;">
+  <div class="flow-node">Not Started</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Documents<br>Gathering</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Submitted<br>to DOH</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Under<br>Evaluation</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-node">Released<br><span style="font-weight:400;font-size:10px;">→ update expiry date</span></div>
+</div>
+
+<div style="margin-top:8px;font-size:10px;color:#555;">
+  &nbsp;&nbsp;&nbsp;Business Rule BR-L-03 blocks any backward transition. BR-L-04 enforces future expiry date before allowing "Released."
+</div>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 6: AUTOMATION ARTIFACTS
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">6 &mdash; All Automation Artifacts</div>
+
+<table class="auto-table">
+  <thead>
+    <tr>
+      <th style="width:120px;">ID</th>
+      <th style="width:80px;">Type</th>
+      <th style="width:160px;">Table</th>
+      <th style="width:130px;">Trigger</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>BR-F-01</td><td>Business Rule</td><td>facility</td><td>Before Insert/Update</td><td>Prevent duplicate DOH license numbers across facilities</td></tr>
+    <tr><td>BR-L-01</td><td>Business Rule</td><td>license</td><td>Before Insert/Update</td><td>Compute status (Active/Expiring/Expired/Under Renewal) and days_before_expiry</td></tr>
+    <tr><td>BR-L-02</td><td>Business Rule</td><td>license</td><td>After Insert</td><td>Auto-create all required form checklist items based on license_type</td></tr>
+    <tr><td>BR-L-03</td><td>Business Rule</td><td>license</td><td>Before Update</td><td>Abort save if renewal_stage is moved backward</td></tr>
+    <tr><td>BR-L-04</td><td>Business Rule</td><td>license</td><td>Before Update</td><td>Validate expiry_date is in the future when stage = Released</td></tr>
+    <tr><td>BR-L-05</td><td>Business Rule</td><td>license</td><td>After Update</td><td>Write AUDIT_LOG entry whenever renewal_stage changes</td></tr>
+    <tr><td>BR-C-01</td><td>Business Rule</td><td>form_checklist</td><td>Before Update</td><td>Auto-set/clear completed_at and completed_by when is_completed toggles</td></tr>
+    <tr><td>CS-01</td><td>Client Script</td><td>evidence_file</td><td>onSubmit</td><td>Block submission if attached file exceeds 10 MB</td></tr>
+    <tr><td>CS-02</td><td>Client Script</td><td>license</td><td>onChange: renewal_stage</td><td>Show confirmation dialog when stage changes to Released</td></tr>
+    <tr><td>UP-01</td><td>UI Policy</td><td>license</td><td>Always</td><td>Set status, days_before_expiry, checklist_pct to read-only</td></tr>
+    <tr><td>UP-02</td><td>UI Policy</td><td>form_checklist</td><td>Always</td><td>Set completed_at and completed_by to read-only</td></tr>
+    <tr><td>SJ-01</td><td>Scheduled Job</td><td>—</td><td>Daily 06:00 PHT</td><td>Query licenses, create Alert records at 90/60/30/7 day thresholds</td></tr>
+    <tr><td>EN-01</td><td>Email Notification</td><td>alert</td><td>Record Inserted</td><td>Send expiry alert email to assigned compliance officer</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 7: ROLES & ACCESS CONTROL
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">7 &mdash; Roles &amp; Access Control</div>
+
+<table class="role-table">
+  <thead>
+    <tr>
+      <th>Table</th>
+      <th>Operation</th>
+      <th>x_lto_tracker.admin</th>
+      <th>x_lto_tracker.viewer</th>
+      <th>System / Business Rule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Facility</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>Facility</td><td>Create / Update</td><td class="check">✓</td><td class="cross">—</td><td class="check">✓</td></tr>
+    <tr><td>Facility</td><td>Delete</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td></tr>
+    <tr><td>License</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>License</td><td>Create / Update</td><td class="check">✓</td><td class="cross">—</td><td class="check">✓</td></tr>
+    <tr><td>License</td><td>Delete</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td></tr>
+    <tr><td>Form Checklist</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>Form Checklist</td><td>Create / Update</td><td class="check">✓</td><td class="cross">—</td><td class="check">✓</td></tr>
+    <tr><td>Evidence File</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>Evidence File</td><td>Create</td><td class="check">✓</td><td class="cross">—</td><td class="check">✓</td></tr>
+    <tr><td>Alert</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>Alert</td><td>Create</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓ (Scheduled Job only)</td></tr>
+    <tr><td>Audit Log</td><td>Read</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+    <tr><td>Audit Log</td><td>Create / Update / Delete</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓ (Business Rule only)</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ═══════════════════════════════════════════════
+     SECTION 8: IMPLEMENTATION ORDER
+═══════════════════════════════════════════════ -->
+<div class="section-label" style="margin-top:44px;">8 &mdash; Implementation Order (for AI-Assisted Development)</div>
+
+<table class="auto-table">
+  <thead>
+    <tr>
+      <th style="width:60px;">Step</th>
+      <th style="width:120px;">Phase</th>
+      <th>Task</th>
+      <th>Dependency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Scaffold</td><td>Create Scoped Application — scope: x_lto_tracker</td><td>None</td></tr>
+    <tr><td>2</td><td>Scaffold</td><td>Create roles: x_lto_tracker.admin, x_lto_tracker.viewer</td><td>Step 1</td></tr>
+    <tr><td>3</td><td>Tables</td><td>Create x_lto_tracker_facility with all fields</td><td>Step 2</td></tr>
+    <tr><td>4</td><td>Tables</td><td>Create x_lto_tracker_license with all fields</td><td>Step 3</td></tr>
+    <tr><td>5</td><td>Tables</td><td>Create x_lto_tracker_alert with all fields</td><td>Step 4</td></tr>
+    <tr><td>6</td><td>Tables</td><td>Create x_lto_tracker_form_checklist with all fields</td><td>Step 4</td></tr>
+    <tr><td>7</td><td>Tables</td><td>Create x_lto_tracker_evidence_file with all fields</td><td>Step 4</td></tr>
+    <tr><td>8</td><td>Tables</td><td>Create x_lto_tracker_audit_log with all fields</td><td>Steps 3–4</td></tr>
+    <tr><td>9</td><td>Business Rules</td><td>BR-F-01 — Facility duplicate DOH number check</td><td>Step 3</td></tr>
+    <tr><td>10</td><td>Business Rules</td><td>BR-L-01 — License status and days_before_expiry computation</td><td>Step 4</td></tr>
+    <tr><td>11</td><td>Business Rules</td><td>BR-L-02 — Auto-create checklist items on license insert</td><td>Steps 4, 6</td></tr>
+    <tr><td>12</td><td>Business Rules</td><td>BR-L-03 — Prevent backward stage transitions</td><td>Step 4</td></tr>
+    <tr><td>13</td><td>Business Rules</td><td>BR-L-04 — Validate expiry date on Released</td><td>Step 4</td></tr>
+    <tr><td>14</td><td>Business Rules</td><td>BR-L-05 — Write audit log on stage change</td><td>Steps 4, 8</td></tr>
+    <tr><td>15</td><td>Business Rules</td><td>BR-C-01 — Auto-set completed_at/completed_by</td><td>Step 6</td></tr>
+    <tr><td>16</td><td>Forms &amp; Lists</td><td>Configure Facility form layout</td><td>Step 3</td></tr>
+    <tr><td>17</td><td>Forms &amp; Lists</td><td>Configure License form layout with all related lists</td><td>Steps 4–8</td></tr>
+    <tr><td>18</td><td>Forms &amp; Lists</td><td>Configure default list views for all modules</td><td>Steps 3–8</td></tr>
+    <tr><td>19</td><td>Forms &amp; Lists</td><td>Add UI Policies (UP-01, UP-02)</td><td>Steps 16–17</td></tr>
+    <tr><td>20</td><td>Forms &amp; Lists</td><td>Add Client Scripts (CS-01, CS-02)</td><td>Steps 16–17</td></tr>
+    <tr><td>21</td><td>Navigation</td><td>Create Application Menu and all Module entries</td><td>Steps 16–18</td></tr>
+    <tr><td>22</td><td>Security</td><td>Create all ACLs per role matrix</td><td>Steps 2–8</td></tr>
+    <tr><td>23</td><td>Automation</td><td>Create Scheduled Job SJ-01 (daily alert generator)</td><td>Steps 4, 5</td></tr>
+    <tr><td>24</td><td>Automation</td><td>Create Email Notification EN-01 (on alert insert)</td><td>Step 23</td></tr>
+    <tr><td>25</td><td>Portal</td><td>Create Service Portal page lto_dashboard</td><td>Steps 4–5</td></tr>
+    <tr><td>26</td><td>Portal</td><td>Build Widgets: Status Summary, Expiring Licenses, Recent Alerts</td><td>Step 25</td></tr>
+    <tr><td>27</td><td>Portal</td><td>Link portal page to Application Menu module</td><td>Steps 21, 26</td></tr>
+    <tr><td>28</td><td>Testing</td><td>Create test Facility + License records; verify status computation</td><td>Steps 9–15</td></tr>
+    <tr><td>29</td><td>Testing</td><td>Manually run Scheduled Job; verify Alert records and email delivery</td><td>Steps 23–24</td></tr>
+    <tr><td>30</td><td>Testing</td><td>Log in as viewer; confirm no write access on all tables</td><td>Step 22</td></tr>
+  </tbody>
+</table>
+
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><span class="legend-swatch dark"></span> Core table header</div>
+  <div class="legend-item"><span class="legend-swatch plain" style="border:2px solid #111;"></span> Core entity table</div>
+  <div class="legend-item"><span class="legend-swatch shaded"></span> Logic / automation component</div>
+  <div class="legend-item"><span style="font-size:10px;font-family:monospace;background:#444;color:#fff;padding:1px 4px;border-radius:2px;">PK</span> Primary key</div>
+  <div class="legend-item"><span style="font-size:10px;font-family:monospace;background:#888;color:#fff;padding:1px 4px;border-radius:2px;">FK</span> Foreign key reference</div>
+  <div class="legend-item"><span style="font-style:italic;font-size:10px;">[computed]</span> Field set by business rule, not user input</div>
+  <div style="color:#999;font-size:10px;margin-left:auto;">PRBCS00032 · x_lto_tracker · April 2026</div>
+</div>
+
+</body>
+</html>
