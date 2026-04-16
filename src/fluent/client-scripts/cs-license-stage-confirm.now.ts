@@ -3,7 +3,7 @@ import { ClientScript } from '@servicenow/sdk/core'
 // CS-02: Show confirmation when renewal_stage changes to "Released"
 ClientScript({
     $id: Now.ID['cs_license_stage_released_confirm'],
-    name: 'LTO — Confirm Expiry Date Update on Stage Released',
+    name: 'LTO: Confirm Expiry on Stage Released',
     table: 'x_1998335_health_l_license',
     type: 'onChange',
     field: 'x_1998335_health_l_renewal_stage',

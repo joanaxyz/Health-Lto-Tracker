@@ -1,31 +1,51 @@
-<div>
-  <h4>Licenses Expiring Within 90 Days</h4>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Facility</th>
-        <th>License Type</th>
-        <th>License Number</th>
-        <th>Expiry Date</th>
-        <th>Days Remaining</th>
-        <th>Renewal Stage</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="lic in licenses"
-          ng-style="{'background-color': lic.row_color}"
-          ng-click="openLicense(lic.sys_id)"
-          style="cursor:pointer;">
-        <td ng-bind="lic.facility"></td>
-        <td ng-bind="lic.license_type"></td>
-        <td ng-bind="lic.license_number"></td>
-        <td ng-bind="lic.expiry_date"></td>
-        <td ng-bind="lic.days_before_expiry"></td>
-        <td ng-bind="lic.renewal_stage"></td>
-      </tr>
-      <tr ng-if="licenses.length === 0">
-        <td colspan="6" class="text-center text-muted">No licenses expiring within 90 days.</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="lto-section-card">
+  <div class="lto-section-header">
+    <div class="lto-section-title">
+      <span class="glyphicon glyphicon-time lto-section-icon"></span>
+      Licenses Expiring Within 90 Days
+    </div>
+    <a class="lto-view-all" href="/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_days_before_expiry%3C%3D90%5Ex_1998335_health_l_days_before_expiry%3E%3D0">
+      View All <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+  <div class="lto-section-body">
+    <table class="table table-hover lto-table">
+      <thead>
+        <tr>
+          <th>Facility</th>
+          <th>License Type</th>
+          <th>License #</th>
+          <th>Expiry Date</th>
+          <th>Days Left</th>
+          <th>Renewal Stage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="lic in licenses"
+            ng-click="openLicense(lic.sys_id)"
+            class="lto-table-row">
+          <td ng-bind="lic.facility"></td>
+          <td ng-bind="lic.license_type"></td>
+          <td><strong ng-bind="lic.license_number"></strong></td>
+          <td ng-bind="lic.expiry_date"></td>
+          <td>
+            <span class="label"
+                  ng-class="{
+                    'label-danger':  lic.days_before_expiry < 30,
+                    'label-warning': lic.days_before_expiry >= 30 && lic.days_before_expiry < 60,
+                    'label-info':    lic.days_before_expiry >= 60
+                  }"
+                  ng-bind="lic.days_before_expiry + 'd'"></span>
+          </td>
+          <td ng-bind="lic.renewal_stage"></td>
+        </tr>
+        <tr ng-if="licenses.length === 0">
+          <td colspan="6" class="lto-empty-row">
+            <span class="glyphicon glyphicon-ok-circle"></span>
+            No licenses expiring within 90 days.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

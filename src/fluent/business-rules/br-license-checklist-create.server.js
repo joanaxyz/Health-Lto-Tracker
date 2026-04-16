@@ -1,4 +1,5 @@
 ;(function executeRule(current, previous) {
+    /** @type {{name: string, purpose: string}[]} */
     var forms = [];
     var lt = current.x_1998335_health_l_license_type.toString();
 

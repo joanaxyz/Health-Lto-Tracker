@@ -7,7 +7,7 @@ Record({
     data: {
         title: 'LTO Compliance Tracker',
         url_suffix: 'lto_tracker',
-        homepage: 'lto_dashboard',
+        homepage: '8ead4198fa134de083304226de9c38f8',
         kb_knowledge_base: '',
     },
 })

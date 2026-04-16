@@ -18,6 +18,8 @@
             facility: gr.x_1998335_health_l_license_id.x_1998335_health_l_facility_id.x_1998335_health_l_name.toString(),
             license_type: gr.x_1998335_health_l_license_id.x_1998335_health_l_license_type.getDisplayValue(),
             days_before_expiry: parseInt(gr.x_1998335_health_l_days_before_expiry),
+            channel: gr.x_1998335_health_l_channel.toString(),
+            status: gr.x_1998335_health_l_status.toString(),
             sent_at: gr.x_1998335_health_l_sent_at.getDisplayValue(),
         });
     }

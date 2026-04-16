@@ -1,0 +1,30 @@
+<div class="lto-hero">
+  <div class="container">
+    <div class="lto-hero-content">
+      <h2 class="lto-hero-greeting">Hello, <span ng-bind="user_name"></span></h2>
+      <p class="lto-hero-subtitle">Welcome to the Health LTO Tracker</p>
+      <p class="lto-hero-date">
+        <span class="glyphicon glyphicon-calendar"></span>
+        <span ng-bind="today"></span>
+      </p>
+      <div class="lto-hero-search">
+        <input type="text" placeholder="Search licenses, facilities..." />
+        <span class="glyphicon glyphicon-search lto-search-icon"></span>
+      </div>
+      <div class="lto-hero-stats">
+        <div class="lto-hero-stat">
+          <div class="lto-hero-stat-number" ng-bind="active"></div>
+          <div class="lto-hero-stat-label">Active</div>
+        </div>
+        <div class="lto-hero-stat lto-hero-stat-warn">
+          <div class="lto-hero-stat-number" ng-bind="expiring_soon"></div>
+          <div class="lto-hero-stat-label">Expiring Soon</div>
+        </div>
+        <div class="lto-hero-stat lto-hero-stat-danger">
+          <div class="lto-hero-stat-number" ng-bind="expired"></div>
+          <div class="lto-hero-stat-label">Expired</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

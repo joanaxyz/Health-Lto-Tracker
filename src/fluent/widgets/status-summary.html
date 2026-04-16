@@ -1,20 +1,38 @@
-<div class="row">
-  <div class="col-md-4">
-    <div class="panel text-center" style="background:#28a745;color:#fff;padding:20px;cursor:pointer;" ng-click="goToActive()">
-      <h2 ng-bind="active"></h2>
-      <p>Active Licenses</p>
+<div class="lto-kpi-row row">
+  <div class="col-md-3 col-sm-6">
+    <div class="lto-kpi-card lto-kpi-active" ng-click="goToActive()">
+      <div class="lto-kpi-icon-wrap">
+        <span class="glyphicon glyphicon-ok-circle lto-kpi-icon"></span>
+      </div>
+      <div class="lto-kpi-count" ng-bind="active"></div>
+      <div class="lto-kpi-label">Active Licenses</div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="panel text-center" style="background:#fd7e14;color:#fff;padding:20px;cursor:pointer;" ng-click="goToExpiringSoon()">
-      <h2 ng-bind="expiring_soon"></h2>
-      <p>Expiring Soon</p>
+  <div class="col-md-3 col-sm-6">
+    <div class="lto-kpi-card lto-kpi-expiring" ng-click="goToExpiringSoon()">
+      <div class="lto-kpi-icon-wrap">
+        <span class="glyphicon glyphicon-time lto-kpi-icon"></span>
+      </div>
+      <div class="lto-kpi-count" ng-bind="expiring_soon"></div>
+      <div class="lto-kpi-label">Expiring Soon</div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="panel text-center" style="background:#dc3545;color:#fff;padding:20px;cursor:pointer;" ng-click="goToExpired()">
-      <h2 ng-bind="expired"></h2>
-      <p>Expired Licenses</p>
+  <div class="col-md-3 col-sm-6">
+    <div class="lto-kpi-card lto-kpi-expired" ng-click="goToExpired()">
+      <div class="lto-kpi-icon-wrap">
+        <span class="glyphicon glyphicon-remove-circle lto-kpi-icon"></span>
+      </div>
+      <div class="lto-kpi-count" ng-bind="expired"></div>
+      <div class="lto-kpi-label">Expired</div>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-6">
+    <div class="lto-kpi-card lto-kpi-renewal" ng-click="goToRenewal()">
+      <div class="lto-kpi-icon-wrap">
+        <span class="glyphicon glyphicon-refresh lto-kpi-icon"></span>
+      </div>
+      <div class="lto-kpi-count" ng-bind="under_renewal"></div>
+      <div class="lto-kpi-label">Under Renewal</div>
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ SPWidget({
     serverScript: Now.include('./expiring-licenses.server.js'),
     clientScript: Now.include('./expiring-licenses.client.js'),
     htmlTemplate: Now.include('./expiring-licenses.html'),
+    customCss: Now.include('./expiring-licenses.scss'),
     hasPreview: false,
     demoData: {
         data: {

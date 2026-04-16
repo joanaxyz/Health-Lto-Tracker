@@ -7,6 +7,7 @@ SPWidget({
     serverScript: Now.include('./recent-alerts.server.js'),
     clientScript: Now.include('./recent-alerts.client.js'),
     htmlTemplate: Now.include('./recent-alerts.html'),
+    customCss: Now.include('./recent-alerts.scss'),
     hasPreview: false,
     demoData: {
         data: {

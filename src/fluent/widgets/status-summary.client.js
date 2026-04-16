@@ -3,6 +3,7 @@ api.controller = function ($scope) {
     $scope.active = c.data.active;
     $scope.expiring_soon = c.data.expiring_soon;
     $scope.expired = c.data.expired;
+    $scope.under_renewal = c.data.under_renewal;
 
     $scope.goToActive = function () {
         window.location.href = '/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_status%3Dactive';
@@ -12,5 +13,8 @@ api.controller = function ($scope) {
     };
     $scope.goToExpired = function () {
         window.location.href = '/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_status%3Dexpired';
+    };
+    $scope.goToRenewal = function () {
+        window.location.href = '/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_status%3Dunder_renewal';
     };
 };

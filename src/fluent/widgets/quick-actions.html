@@ -1,0 +1,15 @@
+<div class="lto-actions-wrapper">
+  <div class="container">
+    <div class="lto-actions-inner">
+      <div class="lto-actions-title">Quick Actions</div>
+      <div class="lto-tiles-row">
+        <div class="lto-tile lto-tile-{{tile.color}}" ng-repeat="tile in tiles" ng-click="navigate(tile.url)">
+          <div class="lto-tile-icon-wrap">
+            <span class="glyphicon glyphicon-{{tile.icon}}"></span>
+          </div>
+          <div class="lto-tile-label" ng-bind="tile.label"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { ClientScript } from '@servicenow/sdk/core'
 // CS-01: Validate evidence file attachment size (max 10 MB) on submit
 ClientScript({
     $id: Now.ID['cs_evidence_file_size'],
-    name: 'LTO — Validate Evidence File Size on Submit',
+    name: 'LTO: Validate Evidence File Size',
     table: 'x_1998335_health_l_evidence_file',
     type: 'onSubmit',
     active: true,

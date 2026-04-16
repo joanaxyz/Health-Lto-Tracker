@@ -5,7 +5,7 @@ Record({
     $id: Now.ID['scheduled_job_daily_alert'],
     table: 'sysauto_script',
     data: {
-        name: 'LTO Tracker — Daily Expiry Alert Job',
+        name: 'LTO: Daily Expiry Alert Job',
         active: true,
         run_type: 'daily',
         run_time: '22:00:00',  // 22:00 UTC = 06:00 PHT (UTC+8)

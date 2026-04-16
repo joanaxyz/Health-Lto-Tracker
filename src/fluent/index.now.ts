@@ -50,6 +50,9 @@ import './portal/portal.now'
 import './portal/page.now'
 
 // Widgets
+import './widgets/hero-banner.now'
+import './widgets/quick-actions.now'
+import './widgets/checklist-progress.now'
 import './widgets/status-summary.now'
 import './widgets/expiring-licenses.now'
 import './widgets/recent-alerts.now'

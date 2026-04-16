@@ -161,13 +161,35 @@ declare global {
                         table: 'sys_app_application'
                         id: '84352c5b1995445e9b7438f02ce92b15'
                     }
+                    lto_col_alerts_v2: {
+                        table: 'sp_column'
+                        id: '265696a8d9e144e7b525c30368ebc181'
+                    }
+                    lto_col_checklist: {
+                        table: 'sp_column'
+                        id: '26f360a3678246baa04b2ca28e9c434f'
+                    }
+                    lto_col_expiring: {
+                        table: 'sp_column'
+                        id: 'f366a40911de43e1b1c5f47ab7902299'
+                    }
                     lto_col_expiring_licenses: {
                         table: 'sp_column'
                         id: 'dff346ef9e0648c0a62474ad0cf53dd9'
+                        deleted: true
+                    }
+                    lto_col_hero: {
+                        table: 'sp_column'
+                        id: '9858a1728690430284d037f30a1ab385'
+                    }
+                    lto_col_quick_actions: {
+                        table: 'sp_column'
+                        id: '86e5b1df2fcd458badb08ca2d5851f7f'
                     }
                     lto_col_recent_alerts: {
                         table: 'sp_column'
                         id: '07ed0572a3884330be12600d2c9211df'
+                        deleted: true
                     }
                     lto_col_status_summary: {
                         table: 'sp_column'
@@ -177,9 +199,25 @@ declare global {
                         table: 'sp_container'
                         id: 'aacfd7467b434be78a98509e1067f1d1'
                     }
+                    lto_dashboard_container_main: {
+                        table: 'sp_container'
+                        id: 'a67a02881a90478a82005ea10092d134'
+                    }
+                    lto_instance_checklist_progress: {
+                        table: 'sp_instance'
+                        id: '06d7a943b16c4ad4a54781069f00ce3a'
+                    }
                     lto_instance_expiring_licenses: {
                         table: 'sp_instance'
                         id: 'b02df4d6174442d582a7f0a3bf40e6ed'
+                    }
+                    lto_instance_hero: {
+                        table: 'sp_instance'
+                        id: '5bd3d7a4db19479d9d76e7a834b6b896'
+                    }
+                    lto_instance_quick_actions: {
+                        table: 'sp_instance'
+                        id: '533af4583d06456da95c24cbd96900e0'
                     }
                     lto_instance_recent_alerts: {
                         table: 'sp_instance'
@@ -193,13 +231,31 @@ declare global {
                         table: 'sp_portal'
                         id: 'a217364ec76640908f0245b2c2d9ac91'
                     }
+                    lto_row_alerts_v2: {
+                        table: 'sp_row'
+                        id: '32c59ac659714851b7ca4e900f4c8564'
+                    }
+                    lto_row_expiring_checklist: {
+                        table: 'sp_row'
+                        id: '69e0f6c3a7ee4a2dbfe2ce0f083a2e4d'
+                    }
                     lto_row_expiring_licenses: {
                         table: 'sp_row'
                         id: 'e0b3adfc16bc48f79f839812267c41e7'
+                        deleted: true
+                    }
+                    lto_row_hero: {
+                        table: 'sp_row'
+                        id: '8c7dac0b00514e84b4ce66edfb1ecebf'
+                    }
+                    lto_row_quick_actions: {
+                        table: 'sp_row'
+                        id: 'bac9fbe696c74f9fa1ca43f7e724515c'
                     }
                     lto_row_recent_alerts: {
                         table: 'sp_row'
                         id: 'f00006dc2616434a863998668b29c899'
+                        deleted: true
                     }
                     lto_row_status_summary: {
                         table: 'sp_row'
@@ -270,9 +326,21 @@ declare global {
                         table: 'sysauto_script'
                         id: '141ceb059ca345348eefa294b6a3d11f'
                     }
+                    widget_lto_checklist_progress: {
+                        table: 'sp_widget'
+                        id: '9e1436746c0f42cd8de9087825346315'
+                    }
                     widget_lto_expiring_licenses: {
                         table: 'sp_widget'
                         id: '030bacad6a1644089fd79364f8f19baf'
+                    }
+                    widget_lto_hero_banner: {
+                        table: 'sp_widget'
+                        id: '5c4753f5f51e4e25bf64ee525b431604'
+                    }
+                    widget_lto_quick_actions: {
+                        table: 'sp_widget'
+                        id: '9d43d04d2ed946678e046030c5f8ea80'
                     }
                     widget_lto_recent_alerts: {
                         table: 'sp_widget'

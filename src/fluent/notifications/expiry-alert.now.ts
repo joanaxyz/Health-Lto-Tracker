@@ -5,7 +5,7 @@ Record({
     $id: Now.ID['email_notification_expiry_alert'],
     table: 'sysevent_emailaction',
     data: {
-        name: 'LTO Tracker — License Expiry Alert',
+        name: 'LTO: License Expiry Alert',
         active: true,
         collection: 'x_1998335_health_l_alert',
         event_name: '',

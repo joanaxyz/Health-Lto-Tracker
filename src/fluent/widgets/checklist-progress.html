@@ -1,0 +1,32 @@
+<div class="lto-card">
+  <div class="lto-card-header">
+    <span class="glyphicon glyphicon-tasks lto-card-header-icon"></span>
+    Checklist Progress
+  </div>
+  <div class="lto-card-body">
+    <div ng-if="licenses.length === 0" class="lto-empty-state">
+      No licenses require checklist attention.
+    </div>
+    <div class="lto-progress-item"
+         ng-repeat="lic in licenses"
+         ng-click="openLicense(lic.sys_id)"
+         title="{{lic.license_number}} — {{lic.facility}}">
+      <div class="lto-progress-meta">
+        <span class="lto-progress-name" ng-bind="lic.license_number"></span>
+        <span class="lto-progress-days"
+              ng-class="{'lto-days-red': lic.days < 30, 'lto-days-orange': lic.days >= 30 && lic.days < 60}"
+              ng-bind="lic.days + 'd'"></span>
+      </div>
+      <div class="lto-progress-facility" ng-bind="lic.facility"></div>
+      <div class="progress lto-progress-bar">
+        <div class="progress-bar {{lic.bar_class}}"
+             role="progressbar"
+             ng-style="{'width': lic.pct + '%'}"
+             aria-valuenow="{{lic.pct}}"
+             aria-valuemin="0"
+             aria-valuemax="100">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,12 +7,14 @@ SPWidget({
     serverScript: Now.include('./status-summary.server.js'),
     clientScript: Now.include('./status-summary.client.js'),
     htmlTemplate: Now.include('./status-summary.html'),
+    customCss: Now.include('./status-summary.scss'),
     hasPreview: false,
     demoData: {
         data: {
             active: 5,
             expiring_soon: 3,
             expired: 1,
+            under_renewal: 2,
         },
     },
 })
