@@ -65,23 +65,23 @@
 .lto-progress-days {
   font-size: 11px;
   font-weight: 700;
-  color: #22c55e;
+  color: #28a745;
   padding: 2px 8px;
   border-radius: 10px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: #e8f5e9;
+  border: 1px solid #a3d9a5;
 }
 
 .lto-days-red {
-  color: #ef4444;
-  background: #fef2f2;
-  border-color: #fecaca;
+  color: #dc3545;
+  background: #fdecea;
+  border-color: #f5c6cb;
 }
 
 .lto-days-orange {
-  color: #d97706;
-  background: #fffbeb;
-  border-color: #fde68a;
+  color: #fd7e14;
+  background: #fff3e0;
+  border-color: #ffd8a8;
 }
 
 .lto-progress-facility {
@@ -116,7 +116,7 @@
   transition: width 0.4s ease;
 }
 
-.lto-progress-bar .progress-bar-success { background-color: #22c55e; }
-.lto-progress-bar .progress-bar-warning { background-color: #f59e0b; }
-.lto-progress-bar .progress-bar-danger  { background-color: #ef4444; }
+.lto-progress-bar .progress-bar-success { background-color: #28a745; }
+.lto-progress-bar .progress-bar-warning { background-color: #fd7e14; }
+.lto-progress-bar .progress-bar-danger  { background-color: #dc3545; }
 .lto-progress-bar .progress-bar-info    { background-color: #0d9aaa; }

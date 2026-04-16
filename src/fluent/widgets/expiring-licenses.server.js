@@ -10,9 +10,9 @@
     while (gr.next()) {
         var daysLeft = parseInt(gr.x_1998335_health_l_days_before_expiry);
         var rowColor = '';
-        if (daysLeft < 30) rowColor = '#f8d7da';
-        else if (daysLeft < 60) rowColor = '#fff3cd';
-        else rowColor = '#fff9c4';
+        if (daysLeft < 30) rowColor = '#fdecea';
+        else if (daysLeft < 60) rowColor = '#fff3e0';
+        else rowColor = '#fff9e6';
 
         data.licenses.push({
             sys_id: gr.sys_id.toString(),

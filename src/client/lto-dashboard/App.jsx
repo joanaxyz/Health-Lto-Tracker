@@ -22,18 +22,18 @@ const TYPE_ABBR = {
 
 function daysStyle(rawDays) {
     const n = parseInt(rawDays, 10)
-    if (isNaN(n) || n < 0) return { color: '#991b1b', bg: '#fef2f2' }
-    if (n <= 7)             return { color: '#991b1b', bg: '#fef2f2' }
-    if (n <= 30)            return { color: '#92400e', bg: '#fff7ed' }
-    if (n <= 90)            return { color: '#854d0e', bg: '#fefce8' }
-    return                         { color: '#166534', bg: '#f0fdf4' }
+    if (isNaN(n) || n < 0) return { color: '#dc3545', bg: '#fdecea' }
+    if (n <= 7)             return { color: '#dc3545', bg: '#fdecea' }
+    if (n <= 30)            return { color: '#fd7e14', bg: '#fff3e0' }
+    if (n <= 90)            return { color: '#e6a200', bg: '#fff9e6' }
+    return                         { color: '#28a745', bg: '#e8f5e9' }
 }
 
 function pctColor(pct) {
     const n = parseInt(pct, 10) || 0
-    if (n >= 100) return '#16a34a'
-    if (n >= 50)  return '#d97706'
-    return              '#dc2626'
+    if (n >= 100) return '#28a745'
+    if (n >= 50)  return '#fd7e14'
+    return              '#dc3545'
 }
 
 // ─── Atomic components ────────────────────────────────────────────────────────
@@ -281,7 +281,15 @@ export default function App() {
             <header className="lto-header">
                 <div className="lto-header-inner">
                     <div className="lto-header-brand">
-                        <div className="lto-header-brand-icon">🏥</div>
+                        <div className="lto-header-brand-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" width="24" height="24">
+                                <path d="M32 4L8 16v16c0 14.4 10.24 27.84 24 32 13.76-4.16 24-17.6 24-32V16L32 4z" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.6)" strokeWidth="1.5"/>
+                                <rect x="26" y="18" width="12" height="28" rx="2" fill="#fff" opacity="0.92"/>
+                                <rect x="18" y="26" width="28" height="12" rx="2" fill="#fff" opacity="0.92"/>
+                                <circle cx="44" cy="46" r="10" fill="#28a745" stroke="#fff" strokeWidth="2"/>
+                                <path d="M39.5 46l3 3 5.5-5.5" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                            </svg>
+                        </div>
                         <span className="lto-header-brand-name">
                             Health LTO Tracker
                             <span className="lto-header-brand-sub">DOH Licensing</span>
@@ -314,28 +322,28 @@ export default function App() {
                         <StatCard
                             label="Active"
                             count={count('active')}
-                            color="#16a34a"
-                            bg="#f0fdf4"
+                            color="#28a745"
+                            bg="#e8f5e9"
                             icon="✓"
                         />
                         <StatCard
                             label="Expiring Soon"
                             count={count('expiring_soon')}
-                            color="#d97706"
-                            bg="#fffbeb"
+                            color="#fd7e14"
+                            bg="#fff3e0"
                             icon="⚠"
                         />
                         <StatCard
                             label="Expired"
                             count={count('expired')}
-                            color="#dc2626"
-                            bg="#fef2f2"
+                            color="#dc3545"
+                            bg="#fdecea"
                             icon="✕"
                         />
                         <StatCard
                             label="Under Renewal"
                             count={count('under_renewal')}
-                            color="#2563eb"
+                            color="#3b82f6"
                             bg="#eff6ff"
                             icon="↻"
                         />

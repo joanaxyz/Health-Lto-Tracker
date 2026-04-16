@@ -1,11 +1,18 @@
+<<<<<<< Updated upstream
 .lto-hero {
   background: linear-gradient(135deg, #17b9ca 0%, #0d9aaa 40%, #0a7a8e 100%);
   padding: 48px 24px 56px;
   margin-bottom: 0;
+=======
+/* SDD colours: active=#28a745, expiring=#fd7e14, expired=#dc3545 */
+
+.lto-hero {
+>>>>>>> Stashed changes
   position: relative;
   overflow: hidden;
 }
 
+<<<<<<< Updated upstream
 .lto-hero::before {
   content: '';
   position: absolute;
@@ -76,6 +83,167 @@
 }
 
 .lto-hero-search input {
+=======
+.lto-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0d4f5c 0%, #137a6e 50%, #28a745 100%);
+  z-index: 0;
+}
+
+.lto-hero__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+.lto-hero__inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.lto-hero__logo {
+  margin-bottom: 12px;
+}
+
+.lto-hero__logo svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));
+}
+
+.lto-hero__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 8px;
+}
+
+.lto-hero__title {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.lto-hero__sub {
+  font-size: 15px;
+  color: rgba(255,255,255,.75);
+  margin: 0 0 28px;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* Action buttons row */
+.lto-hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.lto-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  cursor: pointer;
+}
+
+.lto-hero__btn:hover {
+  text-decoration: none;
+}
+
+.lto-hero__btn--solid {
+  background: #fff;
+  color: #0d4f5c;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+
+.lto-hero__btn--solid:hover {
+  background: #f0fdf4;
+  color: #0d4f5c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+
+.lto-hero__btn--ghost {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.25);
+}
+
+.lto-hero__btn--ghost:hover {
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  border-color: rgba(255,255,255,.4);
+}
+
+.lto-hero__date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  font-weight: 400;
+}
+
+/* Stat pills */
+.lto-hero__stats {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,.85);
+  background: rgba(0,0,0,.15);
+  border-radius: 28px;
+  padding: 8px 20px;
+}
+
+.lto-hero__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.lto-hero__stat strong {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lto-hero__stat--warn strong  { color: #fde68a; }
+.lto-hero__stat--danger strong { color: #fca5a5; }
+
+.lto-hero__divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,.25);
+}
+
+/* Wave separator */
+.lto-hero__wave {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+>>>>>>> Stashed changes
   width: 100%;
   height: 46px;
   border: none;
