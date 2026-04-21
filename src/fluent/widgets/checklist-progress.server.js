@@ -17,7 +17,7 @@
         data.licenses.push({
             sys_id: gr.sys_id.toString(),
             license_number: gr.x_1998335_health_l_license_number.toString(),
-            facility: gr.x_1998335_health_l_facility_id.getDisplayValue(),
+            facility: gr.x_1998335_health_l_facility_id.x_1998335_health_l_name.toString(),
             pct: pct,
             days: days,
             bar_class: barClass,

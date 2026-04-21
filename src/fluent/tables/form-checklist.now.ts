@@ -9,6 +9,7 @@ import {
 export const x_1998335_health_l_form_checklist = Table({
     name: 'x_1998335_health_l_form_checklist',
     label: 'Form Checklist',
+    display: 'x_1998335_health_l_form_name',
     schema: {
         x_1998335_health_l_license_id: ReferenceColumn({
             label: 'License',
@@ -19,6 +20,7 @@ export const x_1998335_health_l_form_checklist = Table({
             label: 'Form Name',
             maxLength: 300,
             mandatory: true,
+            primary: true,
         }),
         x_1998335_health_l_purpose: StringColumn({
             label: 'Purpose',

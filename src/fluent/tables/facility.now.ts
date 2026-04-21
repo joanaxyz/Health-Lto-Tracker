@@ -9,11 +9,13 @@ import {
 export const x_1998335_health_l_facility = Table({
     name: 'x_1998335_health_l_facility',
     label: 'Facility',
+    display: 'x_1998335_health_l_name',
     schema: {
         x_1998335_health_l_name: StringColumn({
             label: 'Name',
             maxLength: 200,
             mandatory: true,
+            primary: true,
         }),
         x_1998335_health_l_doh_license_number: StringColumn({
             label: 'DOH License Number',

@@ -9,6 +9,7 @@ import {
 export const x_1998335_health_l_evidence_file = Table({
     name: 'x_1998335_health_l_evidence_file',
     label: 'Evidence File',
+    display: 'x_1998335_health_l_file_name',
     schema: {
         x_1998335_health_l_license_id: ReferenceColumn({
             label: 'License',
@@ -19,6 +20,7 @@ export const x_1998335_health_l_evidence_file = Table({
             label: 'File Name',
             maxLength: 300,
             mandatory: true,
+            primary: true,
         }),
         x_1998335_health_l_attachment_sys_id: StringColumn({
             label: 'Attachment',

@@ -33,10 +33,14 @@ import './app-menu/app-menu.now'
 // Form Layouts
 import './forms/facility-form.now'
 import './forms/license-form.now'
+import './forms/license-related-lists.now'
 
 // List Views
 import './lists/license-list.now'
 import './lists/alert-list.now'
+import './lists/facility-list.now'
+import './lists/form-checklist-list.now'
+import './lists/evidence-file-list.now'
 
 // UI Policies
 import './ui-policies/license-policies.now'
@@ -44,10 +48,13 @@ import './ui-policies/license-policies.now'
 // Client Scripts
 import './client-scripts/cs-evidence-file-size.now'
 import './client-scripts/cs-license-stage-confirm.now'
+import './client-scripts/cs-license-days-before-expiry.now'
 
 // Service Portal
 import './portal/portal.now'
 import './portal/page.now'
+import './portal/license-detail-page.now'
+import './portal/search-source.now'
 
 // Widgets
 import './widgets/hero-banner.now'
@@ -56,6 +63,7 @@ import './widgets/checklist-progress.now'
 import './widgets/status-summary.now'
 import './widgets/expiring-licenses.now'
 import './widgets/recent-alerts.now'
+import './widgets/license-detail.now'
 
 // UI Pages
 import './ui-pages/lto-dashboard.now'

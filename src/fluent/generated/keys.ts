@@ -129,9 +129,77 @@ declare global {
                         table: 'sys_script_client'
                         id: '799fafa306e1441a9d029792d29c9b23'
                     }
+                    cs_license_days_before_expiry: {
+                        table: 'sys_script_client'
+                        id: '138981cf44a340cbacb47ef8abdbb1a1'
+                    }
                     cs_license_stage_released_confirm: {
                         table: 'sys_script_client'
                         id: '4654ff930a614ab1ab4645aa0f887569'
+                    }
+                    el_fac_active: {
+                        table: 'sys_ui_element'
+                        id: '3cf257b2410341628d11f708f0baaf1b'
+                    }
+                    el_fac_address: {
+                        table: 'sys_ui_element'
+                        id: 'aa683537e04648268c9de201a84e2e98'
+                    }
+                    el_fac_compliance_officer: {
+                        table: 'sys_ui_element'
+                        id: '59bdc90c41cf474eb033efcee7333cde'
+                    }
+                    el_fac_doh_license_number: {
+                        table: 'sys_ui_element'
+                        id: '5add1d12270046209250bc2354cd6157'
+                    }
+                    el_fac_facility_type: {
+                        table: 'sys_ui_element'
+                        id: '4bd2cbe03254464da0138f577526985d'
+                    }
+                    el_fac_name: {
+                        table: 'sys_ui_element'
+                        id: 'ccfc5cb0155d4222a73596447caf8f27'
+                    }
+                    el_lic_checklist_pct: {
+                        table: 'sys_ui_element'
+                        id: '1fdbcfcf17e245e097a6a73fe1e7e374'
+                    }
+                    el_lic_days_before_expiry: {
+                        table: 'sys_ui_element'
+                        id: '00f51b4f81764c51a2360a04e23809cb'
+                    }
+                    el_lic_expiry_date: {
+                        table: 'sys_ui_element'
+                        id: 'af504836b2c14fd6812dd75dd90d489e'
+                    }
+                    el_lic_facility: {
+                        table: 'sys_ui_element'
+                        id: '09b8ffdf6617427a9d1204e5adecf794'
+                    }
+                    el_lic_issue_date: {
+                        table: 'sys_ui_element'
+                        id: 'f9dec313aaf94c41b685c488b324efd8'
+                    }
+                    el_lic_license_number: {
+                        table: 'sys_ui_element'
+                        id: 'b89a6c28405a4885832404627fdc1ddd'
+                    }
+                    el_lic_license_type: {
+                        table: 'sys_ui_element'
+                        id: 'bc9ee39fbe8c4897a31f0a855c8824ce'
+                    }
+                    el_lic_notes: {
+                        table: 'sys_ui_element'
+                        id: '4c8a3b946c0a4403bcc5b41f08e5a816'
+                    }
+                    el_lic_renewal_stage: {
+                        table: 'sys_ui_element'
+                        id: '6aab4829e07f4386858798873e2481ad'
+                    }
+                    el_lic_status: {
+                        table: 'sys_ui_element'
+                        id: '64c5323aa1874b94a377c907fb6d1d8d'
                     }
                     email_notification_expiry_alert: {
                         table: 'sysevent_emailaction'
@@ -144,6 +212,7 @@ declare global {
                     form_section_facility_licenses: {
                         table: 'sys_ui_section'
                         id: 'cfe20124077a4c128697bff3e6818cbe'
+                        deleted: true
                     }
                     form_section_license_identity: {
                         table: 'sys_ui_section'
@@ -227,6 +296,22 @@ declare global {
                         table: 'sp_instance'
                         id: '62d47fc44ae643f2b56843ba54e4a758'
                     }
+                    lto_license_detail_col: {
+                        table: 'sp_column'
+                        id: 'f9d74339699d443f9e7e8e440fd61021'
+                    }
+                    lto_license_detail_container: {
+                        table: 'sp_container'
+                        id: '30278768e53d465b95ebe0b4681f9b7b'
+                    }
+                    lto_license_detail_instance: {
+                        table: 'sp_instance'
+                        id: '8a8b28b4d885451898eab9bd044b3b6a'
+                    }
+                    lto_license_detail_row: {
+                        table: 'sp_row'
+                        id: '9e816ab40db34c5b8fc39904fe7f1f85'
+                    }
                     lto_portal: {
                         table: 'sp_portal'
                         id: 'a217364ec76640908f0245b2c2d9ac91'
@@ -260,6 +345,14 @@ declare global {
                     lto_row_status_summary: {
                         table: 'sp_row'
                         id: '7581e5b635b746df8bfb315001432d57'
+                    }
+                    lto_search_source_facilities: {
+                        table: 'sp_search_source'
+                        id: '7b96380f54a24c3ca913c4faaecedf11'
+                    }
+                    lto_search_source_licenses: {
+                        table: 'sp_search_source'
+                        id: '06376bbc1f224cf681c5d0ece783af8a'
                     }
                     lto_sys_app_menu_link: {
                         table: 'sys_app'
@@ -322,6 +415,18 @@ declare global {
                         table: 'sys_module'
                         id: '73c70044b5d64d6a98f9b4737e07c149'
                     }
+                    rl_license_alert: {
+                        table: 'sys_ui_related_list'
+                        id: 'c2bf58293fd249d4bcc6cedba36315c5'
+                    }
+                    rl_license_evidence_file: {
+                        table: 'sys_ui_related_list'
+                        id: 'a790ce2341594a27aedbce22588131e4'
+                    }
+                    rl_license_form_checklist: {
+                        table: 'sys_ui_related_list'
+                        id: '6a89108b5d054acca24769bca3f19716'
+                    }
                     scheduled_job_daily_alert: {
                         table: 'sysauto_script'
                         id: '141ceb059ca345348eefa294b6a3d11f'
@@ -337,6 +442,10 @@ declare global {
                     widget_lto_hero_banner: {
                         table: 'sp_widget'
                         id: '5c4753f5f51e4e25bf64ee525b431604'
+                    }
+                    widget_lto_license_detail: {
+                        table: 'sp_widget'
+                        id: '27d24f61e0884ebb9872c2402a6dc9d1'
                     }
                     widget_lto_quick_actions: {
                         table: 'sp_widget'
@@ -357,6 +466,47 @@ declare global {
                         id: '00659fdb707b41a5ae17ac1e15e42bd0'
                         key: {
                             name: 'x_1998335_health_l/main'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '00ceb39af30b43c6b33c9e565aa4327a'
+                        key: {
+                            list_id: {
+                                id: 'e7f5cdd5d6304759aabcc83d848ad69e'
+                                key: {
+                                    name: 'x_1998335_health_l_alert'
+                                    view: {
+                                        id: 'bf91a067c52d421b83247219cfb03c68'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_sent_at'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: '01112f63fa2f4becb92692b91beab1c0'
+                        deleted: true
+                        key: {
+                            name: 'x_1998335_health_l_facility'
+                            view: {
+                                id: '18c77501395c4c7c8d8e9f6b48bdcf70'
+                                key: {
+                                    name: 'default'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -415,11 +565,51 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '062e47c43d97487ebbb41ff77e131a20'
+                        key: {
+                            list_id: {
+                                id: '40e665e611cd49858c42d889ba605853'
+                                key: {
+                                    name: 'x_1998335_health_l_evidence_file'
+                                    view: {
+                                        id: '0374d9207f434b71b77bee4a848f6921'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_license_id'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '0669f30abab24eae8bf11aeacf057903'
                         key: {
                             name: 'x_1998335_health_l_license'
                             element: 'x_1998335_health_l_checklist_pct'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: '070a5000fd29455a80a70009643f541c'
+                        key: {
+                            name: 'x_1998335_health_l_license'
+                            view: {
+                                id: '8916fcc8be4b4c32956b01e074c5be34'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -499,6 +689,52 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '1310fdf210634906a8eff18b53156024'
+                        key: {
+                            list_id: {
+                                id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                                key: {
+                                    name: 'x_1998335_health_l_form_checklist'
+                                    view: {
+                                        id: '11ba1639927943eca13e8d55aaab7336'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_completed_by'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '13a075ad282a4f8fac2e6d53eb4e22b6'
+                        key: {
+                            list_id: {
+                                id: '31196b23c2764522b18120c8e1ff5723'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: 'd756800e316848148cf132caf49749b3'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_facility_type'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '13b9350107b24cd5933ceeb850d97ac7'
                         key: {
@@ -534,6 +770,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '18e75d1416054a54aad26f27b05af534'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '9a70d03c55834a698d83049450114364'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_license_type'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '197e26d12b464904af5389c704b54e6a'
                         key: {
@@ -549,6 +808,29 @@ declare global {
                             name: 'x_1998335_health_l_alert'
                             element: 'x_1998335_health_l_channel'
                             value: 'in_app'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '1cb0c3773fa14d8499e75dc344b36f7e'
+                        key: {
+                            list_id: {
+                                id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                                key: {
+                                    name: 'x_1998335_health_l_form_checklist'
+                                    view: {
+                                        id: 'b226459bfe9f4030bbb1e5c3dd5aa60a'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_is_completed'
                         }
                     },
                     {
@@ -590,6 +872,13 @@ declare global {
                         }
                     },
                     {
+                        table: 'sp_page'
+                        id: '1f9ca36792194a9b8aba52d481f89fa6'
+                        key: {
+                            id: 'lto_license_detail'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '229cb3cb0b864a7183468969fe4444a6'
                         key: {
@@ -612,6 +901,53 @@ declare global {
                         key: {
                             table: 'x_1998335_health_l_form_checklist'
                             short_description: 'Completed At and Completed By are read-only'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '25c81d7ee6f545fc9581bb55b0502a24'
+                        deleted: true
+                        key: {
+                            list_id: {
+                                id: '01112f63fa2f4becb92692b91beab1c0'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: 'e36dae2136ae46cb8a633888d7a65532'
+                                        key: {
+                                            name: 'default'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_doh_license_number'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '25d7e66435f84ba191ef42bba4a90982'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '680082498e104583ba1046b541a7c9d4'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_checklist_pct'
                         }
                     },
                     {
@@ -657,6 +993,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '2a989a16ceb64198a7442b26b7256a74'
+                        key: {
+                            list_id: {
+                                id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                                key: {
+                                    name: 'x_1998335_health_l_form_checklist'
+                                    view: {
+                                        id: 'a27b65edd64c4cde8e542efd19800db9'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_completed_at'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '2b8ac9cd57cc46c394b52fea6164babe'
                         key: {
@@ -691,6 +1050,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list'
+                        id: '31196b23c2764522b18120c8e1ff5723'
+                        key: {
+                            name: 'x_1998335_health_l_facility'
+                            view: {
+                                id: '6ea92e01082548a29b2fd1af6249524b'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '3287be2c232b443aad8f8a7272be070a'
                         key: {
@@ -715,6 +1091,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '338562fe70f84c048efaaae2ec51587f'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '8541925f135e44eab1138f9010ae0db8'
@@ -816,6 +1193,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '3c5de4a475f54591a6c60dca425f7ab3'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: 'c80aa305f4c44020a6a9c13aff26b922'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_facility_id'
+                        }
+                    },
+                    {
                         table: 'sys_db_object'
                         id: '3cd262fbe4ca43abae8522c43de84977'
                         key: {
@@ -825,6 +1225,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '3dd9780abc754187bf86e4d444edb948'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -877,7 +1278,48 @@ declare global {
                     },
                     {
                         table: 'sys_ui_list'
+                        id: '40e665e611cd49858c42d889ba605853'
+                        key: {
+                            name: 'x_1998335_health_l_evidence_file'
+                            view: {
+                                id: '82f3f7e93f7341c4834509beee581f01'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '41c7d7a9f8354067adb2e5fe851341e6'
+                        key: {
+                            list_id: {
+                                id: 'e7f5cdd5d6304759aabcc83d848ad69e'
+                                key: {
+                                    name: 'x_1998335_health_l_alert'
+                                    view: {
+                                        id: 'a5b70d001add48d795613590414eaf55'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_days_before_expiry'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
                         id: '429b41d3565a4108bc48accd9a9e98b1'
+                        deleted: true
                         key: {
                             name: 'x_1998335_health_l_license'
                             view: {
@@ -900,6 +1342,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '438971db801949dcb39f391db58a5a70'
+                        key: {
+                            list_id: {
+                                id: '40e665e611cd49858c42d889ba605853'
+                                key: {
+                                    name: 'x_1998335_health_l_evidence_file'
+                                    view: {
+                                        id: '687620735b234438b6f4cf5c43b64fc3'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_uploaded_at'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '446b43fbfcd14661819a95edd9b1e9d7'
                         key: {
@@ -915,6 +1380,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '4532d72c526b4d5db9b3c9c1dc43faec'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -954,6 +1420,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '4a0f519cd2d84b709a5c31ecb1f70b6d'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '689a8f1de5414dfe84577159d69e7227'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_expiry_date'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '4a3f249dd1e2426f95f2a9139545ab09'
                         key: {
@@ -972,6 +1461,52 @@ declare global {
                                     name: 'x_1998335_health_l.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '4c736c4bd4084366b11f7a4b57bfa887'
+                        key: {
+                            list_id: {
+                                id: '31196b23c2764522b18120c8e1ff5723'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '50ee42346c1d47119cefc895154a2d7e'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_compliance_officer_id'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '4ce8fe9b437f4448a6c2a24055adccdd'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '56d891e9245f4128a8c6d65c0d68ab0c'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_days_before_expiry'
                         }
                     },
                     {
@@ -1119,6 +1654,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '639f411a173e4ec3869a40aa40c825ca'
+                        key: {
+                            list_id: {
+                                id: '31196b23c2764522b18120c8e1ff5723'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '02aba8579e0144fc98c48924683dd108'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_name'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '665f6031c70f4a7689ba2a419381574c'
                         key: {
@@ -1147,6 +1705,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '6a57cc7a325543ca8189f8b73a8e44df'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -1254,6 +1813,29 @@ declare global {
                                     name: 'x_1998335_health_l.viewer'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '7565e66f0730408384b54ee8cb2d80b3'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '2ee8bd12bc1e4024ac153ca7022bfc82'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_status'
                         }
                     },
                     {
@@ -1386,6 +1968,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '851d6d0e3e4a449b8381d213b4ff47cc'
+                        key: {
+                            list_id: {
+                                id: '40e665e611cd49858c42d889ba605853'
+                                key: {
+                                    name: 'x_1998335_health_l_evidence_file'
+                                    view: {
+                                        id: '425994e8606f44cc8efbd643d1899cb7'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_file_type'
+                        }
+                    },
+                    {
                         table: 'sys_choice_set'
                         id: '8531cbb62b0b45f7a74c5254597c54eb'
                         key: {
@@ -1396,6 +2001,7 @@ declare global {
                     {
                         table: 'sys_ui_list'
                         id: '8541925f135e44eab1138f9010ae0db8'
+                        deleted: true
                         key: {
                             name: 'x_1998335_health_l_alert'
                             view: {
@@ -1408,6 +2014,30 @@ declare global {
                             element: 'NULL'
                             relationship: 'NULL'
                             parent: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '8713927346b44cbab649772c6a5f5ad0'
+                        deleted: true
+                        key: {
+                            list_id: {
+                                id: '01112f63fa2f4becb92692b91beab1c0'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '4ea8ce491ff84117862de5852013c910'
+                                        key: {
+                                            name: 'default'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_active'
                         }
                     },
                     {
@@ -1527,6 +2157,30 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '980b778ff8914c3d9dcd250190bc8b41'
+                        deleted: true
+                        key: {
+                            list_id: {
+                                id: '01112f63fa2f4becb92692b91beab1c0'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '469b31b4ff574f3cbe5ab76690677202'
+                                        key: {
+                                            name: 'default'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_facility_type'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: '982dc773133e4d6fb3ee0c8101e07edc'
                         key: {
@@ -1574,6 +2228,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '9cc73200c92844cab4e5b5d418f80800'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '8541925f135e44eab1138f9010ae0db8'
@@ -1621,6 +2276,53 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'a00f212ed1a147ca96b0b38927819e75'
+                        key: {
+                            list_id: {
+                                id: 'e7f5cdd5d6304759aabcc83d848ad69e'
+                                key: {
+                                    name: 'x_1998335_health_l_alert'
+                                    view: {
+                                        id: '69cf6e205e184e279e5ffb1e851c9f48'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_license_id'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'a05af95d44ca42aea5ad45b3e8155dc9'
+                        deleted: true
+                        key: {
+                            list_id: {
+                                id: '01112f63fa2f4becb92692b91beab1c0'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '50c0da4677f54f00bf7fa516b7026c67'
+                                        key: {
+                                            name: 'default'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_compliance_officer_id'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'a05d34b9e6934a099580a84859b74a3e'
                         key: {
@@ -1639,6 +2341,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'a1980f745b10485096e298f0dc3870f4'
+                        key: {
+                            list_id: {
+                                id: '40e665e611cd49858c42d889ba605853'
+                                key: {
+                                    name: 'x_1998335_health_l_evidence_file'
+                                    view: {
+                                        id: '7debec201fa5492c9e6c4d3897d7ac8c'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_uploaded_by'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: 'a2938956faae4845a63e30046ee2f854'
                         key: {
@@ -1653,6 +2378,29 @@ declare global {
                         key: {
                             name: 'x_1998335_health_l_facility'
                             element: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'a549c87cba8a444fbf628901a2bc8f75'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '70279e142c454549853edc2dd9293f1d'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_renewal_stage'
                         }
                     },
                     {
@@ -1694,6 +2442,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'ab7953015acd4638a3639acdbf9477d8'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '8541925f135e44eab1138f9010ae0db8'
@@ -1734,7 +2483,31 @@ declare global {
                     },
                     {
                         table: 'sys_ui_list_element'
+                        id: 'afeaa49850344ba09474f719830597db'
+                        key: {
+                            list_id: {
+                                id: '31196b23c2764522b18120c8e1ff5723'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: 'f869227263324fb0bc908d9ea28ec296'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_active'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
                         id: 'b00bdfb9655b4ca4a36ead40e6f1f4a8'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -1770,6 +2543,29 @@ declare global {
                         key: {
                             application_file: 'db722f88d3454b72a44a2f9de09423b7'
                             source_artifact: '3582e4fe50d44ff2b5dd73f9715348d1'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'b27ee58926284554ab0d63481271cfc3'
+                        key: {
+                            list_id: {
+                                id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                                key: {
+                                    name: 'x_1998335_health_l_form_checklist'
+                                    view: {
+                                        id: '3d59c7637e0c4162bccace5309617694'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_purpose'
                         }
                     },
                     {
@@ -1855,6 +2651,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'bddcf31d05d84485ac045d78e8918b27'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -1914,6 +2711,29 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'c323fe324cab44d08ee8d70583815c40'
+                        key: {
+                            list_id: {
+                                id: '070a5000fd29455a80a70009643f541c'
+                                key: {
+                                    name: 'x_1998335_health_l_license'
+                                    view: {
+                                        id: '397523829fef4a52bd74dc4b54878a14'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_license_number'
+                        }
+                    },
+                    {
                         table: 'sys_security_acl_role'
                         id: 'c376999e1ecd489998898c44d4e507d8'
                         key: {
@@ -1938,6 +2758,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'c639f534654e42589dc396658e6a44ff'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -1969,6 +2790,52 @@ declare global {
                                     name: 'x_1998335_health_l.admin'
                                 }
                             }
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'ca20a5f26e004653a9bffa8c5c5dbd2f'
+                        key: {
+                            list_id: {
+                                id: '40e665e611cd49858c42d889ba605853'
+                                key: {
+                                    name: 'x_1998335_health_l_evidence_file'
+                                    view: {
+                                        id: '732a20463c6e4a429293a9d58f269ce9'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_file_name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'cc193db298164850aefa4a83f56b1c82'
+                        key: {
+                            list_id: {
+                                id: 'e7f5cdd5d6304759aabcc83d848ad69e'
+                                key: {
+                                    name: 'x_1998335_health_l_alert'
+                                    view: {
+                                        id: '3cc2b4f00b2d4c609f670f585ef1dcc9'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_status'
                         }
                     },
                     {
@@ -2061,6 +2928,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'd5fe7d53324b4d799224d73109cfbc52'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -2159,6 +3027,23 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list'
+                        id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                        key: {
+                            name: 'x_1998335_health_l_form_checklist'
+                            view: {
+                                id: '01db66c11a604ec5b683b9ce19faff76'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'e7717a15b355420b9f6dc839ec84c12a'
                         key: {
@@ -2173,6 +3058,23 @@ declare global {
                             name: 'x_1998335_health_l_license'
                             element: 'x_1998335_health_l_days_before_expiry'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list'
+                        id: 'e7f5cdd5d6304759aabcc83d848ad69e'
+                        key: {
+                            name: 'x_1998335_health_l_alert'
+                            view: {
+                                id: 'c28d2467cea34bde921b49a0767ce829'
+                                key: {
+                                    name: 'NULL'
+                                }
+                            }
+                            sys_domain: 'global'
+                            element: 'NULL'
+                            relationship: 'NULL'
+                            parent: 'NULL'
                         }
                     },
                     {
@@ -2254,11 +3156,81 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'f8b4129c3f4e43028f843a0f1f8ee65f'
+                        key: {
+                            list_id: {
+                                id: '31196b23c2764522b18120c8e1ff5723'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '4162283f99b64727984c0d4399565930'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_doh_license_number'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'f8c37a5607c74d858f48fc7c5eee4a27'
                         key: {
                             name: 'x_1998335_health_l_license'
                             element: 'x_1998335_health_l_license_type'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'f8ef848f5b0c4acabfacdf6a39bbaaaa'
+                        key: {
+                            list_id: {
+                                id: 'e6b0a8f881784ec1a5e9d2149aba9750'
+                                key: {
+                                    name: 'x_1998335_health_l_form_checklist'
+                                    view: {
+                                        id: '41a0c78d5fe944698a835689d9f555c6'
+                                        key: {
+                                            name: 'NULL'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_form_name'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'f98a423f51f74cc3b200baacf51a8fde'
+                        deleted: true
+                        key: {
+                            list_id: {
+                                id: '01112f63fa2f4becb92692b91beab1c0'
+                                key: {
+                                    name: 'x_1998335_health_l_facility'
+                                    view: {
+                                        id: '6ee21ea2435b4760bec17253929c88b7'
+                                        key: {
+                                            name: 'default'
+                                        }
+                                    }
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_1998335_health_l_name'
                         }
                     },
                     {
@@ -2277,6 +3249,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'f9d962eeb5064fd69b7c07a3eddd2a0e'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '429b41d3565a4108bc48accd9a9e98b1'
@@ -2309,6 +3282,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: 'fa47b89d180b462995abf1051011a182'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '8541925f135e44eab1138f9010ae0db8'

@@ -1,0 +1,164 @@
+.lto-detail {
+  padding: 16px 0;
+}
+
+.lto-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 24px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border: 1px solid #eef0f2;
+  margin-bottom: 16px;
+}
+
+.lto-detail-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.lto-detail-type {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.lto-detail-facility {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.lto-detail-badge {
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #f3f4f6;
+  color: #374151;
+}
+.lto-badge-active         { background: #f0fdf4; color: #16a34a; }
+.lto-badge-expiring_soon  { background: #fffbeb; color: #d97706; }
+.lto-badge-under_renewal  { background: #eff6ff; color: #2563eb; }
+.lto-badge-expired        { background: #fef2f2; color: #dc2626; }
+
+.lto-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border: 1px solid #eef0f2;
+  padding: 16px 24px;
+  margin-bottom: 16px;
+}
+
+.lto-cell-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #9ca3af;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.lto-cell-value {
+  font-size: 15px;
+  color: #111827;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.lto-days-red { color: #ef4444; }
+.lto-days-orange { color: #d97706; }
+
+.lto-detail-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.lto-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border: 1px solid #eef0f2;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.lto-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f2f5;
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.lto-card-header-icon { color: #0d9aaa; }
+.lto-card-count { color: #9ca3af; font-weight: 500; font-size: 13px; }
+
+.lto-card-body { padding: 4px 0; }
+
+.lto-empty-state {
+  padding: 24px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.lto-check-row {
+  padding: 10px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.lto-check-row:last-child { border-bottom: none; }
+.lto-check-done .lto-check-name { text-decoration: line-through; color: #9ca3af; }
+
+.lto-check-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  margin: 0;
+  font-weight: 400;
+  flex: 1;
+}
+
+.lto-check-name { font-size: 14px; color: #1f2937; font-weight: 500; }
+
+.lto-check-purpose {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+.lto-check-meta { font-size: 11px; color: #9ca3af; }
+
+.lto-table {
+  margin: 0;
+}
+.lto-table th {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.lto-table td {
+  font-size: 13px;
+  color: #1f2937;
+}

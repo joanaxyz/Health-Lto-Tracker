@@ -4,7 +4,7 @@ import { List } from '@servicenow/sdk/core'
 // Sorted by days_before_expiry ASC (soonest expiry first)
 List({
     table: 'x_1998335_health_l_license',
-    view: 'default',
+    view: '',
     columns: [
         'x_1998335_health_l_license_number',
         'x_1998335_health_l_facility_id',
