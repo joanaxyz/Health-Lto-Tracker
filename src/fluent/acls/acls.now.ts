@@ -131,6 +131,7 @@ Acl({
     type: 'record',
     operation: 'create',
     table: 'x_1998335_health_l_evidence_file',
+    decisionType: 'deny',
     roles: [adminRole],
 })
 

@@ -10,8 +10,12 @@ import './tables/audit-log.now'
 
 // Business Rules
 import './business-rules/br-facility-duplicate.now'
+import './business-rules/br-attachment-evidence-validate.now'
+import './business-rules/br-attachment-evidence-sync.now'
+import './business-rules/br-attachment-evidence-delete.now'
 import './business-rules/br-license-status.now'
 import './business-rules/br-license-checklist-create.now'
+import './business-rules/br-license-expiry-alert.now'
 import './business-rules/br-license-stage-block.now'
 import './business-rules/br-license-stage-released.now'
 import './business-rules/br-license-stage-audit.now'

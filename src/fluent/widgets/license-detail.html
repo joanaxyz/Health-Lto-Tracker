@@ -87,20 +87,34 @@
         <span class="lto-card-count" ng-bind="'(' + data.evidence.length + ')'"></span>
       </div>
       <div class="lto-card-body">
+        <div class="lto-evidence-helper">
+          <div class="lto-evidence-helper-copy">
+            Upload files on the native License record. New uploads appear here automatically, and file type defaults to Other until an admin updates it.
+          </div>
+          <a class="btn btn-primary btn-sm"
+             ng-href="/x_1998335_health_l_license.do?sys_id={{data.license.sys_id}}">
+            Upload Evidence
+          </a>
+        </div>
         <div ng-if="data.evidence.length === 0" class="lto-empty-state">
           No evidence uploaded.
         </div>
         <table class="table lto-table" ng-if="data.evidence.length > 0">
           <thead>
-            <tr><th>File</th><th>Type</th><th>Uploaded</th></tr>
+            <tr><th>File</th><th>Type</th><th>Uploaded By</th><th>Uploaded</th></tr>
           </thead>
           <tbody>
             <tr ng-repeat="ev in data.evidence">
               <td>
-                <a ng-href="/x_1998335_health_l_evidence_file.do?sys_id={{ev.sys_id}}"
+                <a ng-if="ev.download_url"
+                   ng-href="{{ev.download_url}}"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    ng-bind="ev.file_name"></a>
+                <span ng-if="!ev.download_url" ng-bind="ev.file_name"></span>
               </td>
-              <td ng-bind="ev.doc_type"></td>
+              <td ng-bind="ev.file_type"></td>
+              <td ng-bind="ev.uploaded_by || 'System'"></td>
               <td ng-bind="ev.uploaded_on"></td>
             </tr>
           </tbody>

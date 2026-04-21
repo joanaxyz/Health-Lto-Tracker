@@ -63,11 +63,15 @@
     ev.orderByDesc('x_1998335_health_l_uploaded_at');
     ev.query();
     while (ev.next()) {
+        var attachmentId = ev.x_1998335_health_l_attachment_sys_id.toString();
         data.evidence.push({
             sys_id: ev.sys_id.toString(),
             file_name: ev.x_1998335_health_l_file_name.toString(),
-            doc_type: ev.x_1998335_health_l_file_type.getDisplayValue(),
+            file_type: ev.x_1998335_health_l_file_type.getDisplayValue(),
+            uploaded_by: ev.x_1998335_health_l_uploaded_by.getDisplayValue() + '',
             uploaded_on: ev.x_1998335_health_l_uploaded_at.getDisplayValue(),
+            attachment_sys_id: attachmentId,
+            download_url: attachmentId ? '/sys_attachment.do?sys_id=' + attachmentId : '',
         });
     }
 

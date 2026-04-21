@@ -93,6 +93,18 @@ declare global {
                         table: 'sys_module'
                         id: 'c3994767be2f42e6a3def5e438105e0a'
                     }
+                    br_attachment_evidence_delete: {
+                        table: 'sys_script'
+                        id: '4660fc4c10ec4f9fb72ac2313f569bf3'
+                    }
+                    br_attachment_evidence_sync: {
+                        table: 'sys_script'
+                        id: 'a84cba57517e477fb131fb0ee0faf202'
+                    }
+                    br_attachment_evidence_validate: {
+                        table: 'sys_script'
+                        id: '858ae8cfc911449a99d9cf1889c56195'
+                    }
                     br_checklist_completed_timestamp: {
                         table: 'sys_script'
                         id: '3b99aa6766cf4a368b48d1b9195ae93a'
@@ -112,6 +124,10 @@ declare global {
                     br_license_create_checklist: {
                         table: 'sys_script'
                         id: '5b45857a6bfc445896a8a4b1a7714c7d'
+                    }
+                    br_license_create_expiry_alert: {
+                        table: 'sys_script'
+                        id: '648bec284deb49b5842ef17e5c3ab324'
                     }
                     br_license_stage_audit_log: {
                         table: 'sys_script'
@@ -567,6 +583,7 @@ declare global {
                     {
                         table: 'sys_ui_list_element'
                         id: '062e47c43d97487ebbb41ff77e131a20'
+                        deleted: true
                         key: {
                             list_id: {
                                 id: '40e665e611cd49858c42d889ba605853'
@@ -610,6 +627,20 @@ declare global {
                             element: 'NULL'
                             relationship: 'NULL'
                             parent: 'NULL'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_policy_action'
+                        id: '0728db56a72d45ff883382f6a683410f'
+                        key: {
+                            ui_policy: {
+                                id: '77c635c83fe745fea7c80fe76cc36c29'
+                                key: {
+                                    table: 'x_1998335_health_l_evidence_file'
+                                    short_description: 'Synced evidence metadata is read-only'
+                                }
+                            }
+                            field: 'x_1998335_health_l_attachment_sys_id'
                         }
                     },
                     {
@@ -1402,6 +1433,20 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_policy_action'
+                        id: '48155239fe0e48e098bb19f3dd5b8bdc'
+                        key: {
+                            ui_policy: {
+                                id: '77c635c83fe745fea7c80fe76cc36c29'
+                                key: {
+                                    table: 'x_1998335_health_l_evidence_file'
+                                    short_description: 'Synced evidence metadata is read-only'
+                                }
+                            }
+                            field: 'x_1998335_health_l_uploaded_by'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '4817522841ec482596918bba028d5d93'
                         key: {
@@ -1647,6 +1692,20 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_policy_action'
+                        id: '5f9634aa7cd94676a5b8e538eab9aa32'
+                        key: {
+                            ui_policy: {
+                                id: '77c635c83fe745fea7c80fe76cc36c29'
+                                key: {
+                                    table: 'x_1998335_health_l_evidence_file'
+                                    short_description: 'Synced evidence metadata is read-only'
+                                }
+                            }
+                            field: 'x_1998335_health_l_file_name'
+                        }
+                    },
+                    {
                         table: 'sys_ux_lib_asset'
                         id: '62a31540319e440081b87d8379394c68'
                         key: {
@@ -1845,6 +1904,14 @@ declare global {
                             name: 'x_1998335_health_l_evidence_file'
                             element: 'x_1998335_health_l_uploaded_by'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_policy'
+                        id: '77c635c83fe745fea7c80fe76cc36c29'
+                        key: {
+                            table: 'x_1998335_health_l_evidence_file'
+                            short_description: 'Synced evidence metadata is read-only'
                         }
                     },
                     {
@@ -2102,6 +2169,20 @@ declare global {
                         key: {
                             name: 'x_1998335_health_l_evidence_file'
                             element: 'x_1998335_health_l_file_type'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_policy_action'
+                        id: '930e27fb891d464e947b778b9f73f90f'
+                        key: {
+                            ui_policy: {
+                                id: '77c635c83fe745fea7c80fe76cc36c29'
+                                key: {
+                                    table: 'x_1998335_health_l_evidence_file'
+                                    short_description: 'Synced evidence metadata is read-only'
+                                }
+                            }
+                            field: 'x_1998335_health_l_uploaded_at'
                         }
                     },
                     {
@@ -2461,6 +2542,20 @@ declare global {
                                 }
                             }
                             element: 'x_1998335_health_l_days_before_expiry'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_policy_action'
+                        id: 'ac933724195448fc99a68384836340da'
+                        key: {
+                            ui_policy: {
+                                id: '77c635c83fe745fea7c80fe76cc36c29'
+                                key: {
+                                    table: 'x_1998335_health_l_evidence_file'
+                                    short_description: 'Synced evidence metadata is read-only'
+                                }
+                            }
+                            field: 'x_1998335_health_l_license_id'
                         }
                     },
                     {

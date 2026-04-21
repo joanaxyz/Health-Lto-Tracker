@@ -50,3 +50,40 @@ UiPolicy({
         },
     ],
 })
+
+// Evidence File metadata is attachment-synced; only file type remains editable
+UiPolicy({
+    $id: Now.ID['uipolicy_evidence_synced_readonly'],
+    table: 'x_1998335_health_l_evidence_file',
+    shortDescription: 'Synced evidence metadata is read-only',
+    active: true,
+    onLoad: true,
+    reverseIfFalse: false,
+    actions: [
+        {
+            field: 'x_1998335_health_l_license_id',
+            readOnly: true,
+            mandatory: false,
+        },
+        {
+            field: 'x_1998335_health_l_file_name',
+            readOnly: true,
+            mandatory: false,
+        },
+        {
+            field: 'x_1998335_health_l_attachment_sys_id',
+            readOnly: true,
+            mandatory: false,
+        },
+        {
+            field: 'x_1998335_health_l_uploaded_by',
+            readOnly: true,
+            mandatory: false,
+        },
+        {
+            field: 'x_1998335_health_l_uploaded_at',
+            readOnly: true,
+            mandatory: false,
+        },
+    ],
+})
