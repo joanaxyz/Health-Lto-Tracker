@@ -1,152 +1,253 @@
 <div class="lto-detail">
-  <div ng-if="!data.found" class="lto-empty-state">
+  <div ng-if="!data.found" class="lto-detail-empty">
     License not found. Return to the
     <a href="?id=lto_dashboard">dashboard</a>.
   </div>
 
-  <div ng-if="data.found">
-    <div class="lto-detail-header">
-      <div>
-        <div class="lto-detail-title">
-          <span ng-bind="data.license.license_number"></span>
-          <span class="lto-detail-type" ng-bind="data.license.license_type"></span>
+  <div ng-if="data.found" class="lto-detail-shell">
+    <div class="lto-detail-breadcrumb">
+      <a href="?id=lto_dashboard">Dashboard</a>
+      <span class="lto-detail-breadcrumb-sep">/</span>
+      <span>License Detail</span>
+    </div>
+
+    <section class="lto-detail-hero">
+      <div class="lto-detail-hero-copy">
+        <div class="lto-detail-eyebrow">License detail</div>
+        <div class="lto-detail-title-row">
+          <h1 class="lto-detail-title" ng-bind="data.license.license_number"></h1>
+          <span
+            class="lto-detail-badge"
+            ng-class="'lto-detail-badge-' + data.license.status_value"
+            ng-bind="data.license.status"
+          ></span>
         </div>
-        <div class="lto-detail-facility" ng-bind="data.license.facility"></div>
-      </div>
-      <div class="lto-detail-badge"
-           ng-class="'lto-badge-' + data.license.status_value"
-           ng-bind="data.license.status"></div>
-    </div>
+        <p class="lto-detail-subtitle">
+          <span ng-bind="data.license.license_type"></span>
+          <span class="lto-detail-subtitle-sep">for</span>
+          <span ng-bind="data.license.facility"></span>
+        </p>
 
-    <div class="lto-detail-grid">
-      <div class="lto-detail-cell">
-        <div class="lto-cell-label">Issue Date</div>
-        <div class="lto-cell-value" ng-bind="data.license.issue_date || '—'"></div>
-      </div>
-      <div class="lto-detail-cell">
-        <div class="lto-cell-label">Expiry Date</div>
-        <div class="lto-cell-value" ng-bind="data.license.expiry_date || '—'"></div>
-      </div>
-      <div class="lto-detail-cell">
-        <div class="lto-cell-label">Days Before Expiry</div>
-        <div class="lto-cell-value"
-             ng-class="{'lto-days-red': data.license.days_before_expiry < 30, 'lto-days-orange': data.license.days_before_expiry >= 30 && data.license.days_before_expiry < 60}"
-             ng-bind="data.license.days_before_expiry + 'd'"></div>
-      </div>
-      <div class="lto-detail-cell">
-        <div class="lto-cell-label">Renewal Stage</div>
-        <div class="lto-cell-value" ng-bind="data.license.renewal_stage"></div>
-      </div>
-      <div class="lto-detail-cell">
-        <div class="lto-cell-label">Checklist Complete</div>
-        <div class="lto-cell-value" ng-bind="data.license.checklist_pct + '%'"></div>
-      </div>
-    </div>
-
-    <div class="lto-detail-actions">
-      <a class="btn btn-default" ng-href="/x_1998335_health_l_license.do?sys_id={{data.license.sys_id}}">
-        Edit in Native Form
-      </a>
-      <a class="btn btn-default" href="?id=lto_dashboard">Back to Dashboard</a>
-    </div>
-
-    <!-- Checklist -->
-    <div class="lto-card">
-      <div class="lto-card-header">
-        <span class="glyphicon glyphicon-tasks lto-card-header-icon"></span>
-        Form Checklist
-        <span class="lto-card-count" ng-bind="'(' + data.checklist.length + ')'"></span>
-      </div>
-      <div class="lto-card-body">
-        <div ng-if="data.checklist.length === 0" class="lto-empty-state">
-          No checklist rows yet.
+        <div class="lto-detail-inline-meta">
+          <div class="lto-detail-inline-item">
+            <span>Renewal stage</span>
+            <strong ng-bind="data.license.renewal_stage"></strong>
+          </div>
+          <div class="lto-detail-inline-item">
+            <span>Checklist complete</span>
+            <strong ng-bind="data.license.checklist_pct + '%'"></strong>
+          </div>
         </div>
-        <div class="lto-check-row" ng-repeat="row in data.checklist"
-             ng-class="{'lto-check-done': row.completed}">
-          <label class="lto-check-label">
-            <input type="checkbox"
-                   ng-checked="row.completed"
-                   ng-click="toggleChecklist(row)">
-            <span class="lto-check-name" ng-bind="row.form_name"></span>
-            <span class="lto-check-purpose" ng-if="row.purpose" ng-bind="row.purpose"></span>
+      </div>
+
+      <div class="lto-detail-actions">
+        <a
+          class="lto-detail-button lto-detail-button-primary"
+          ng-href="/x_1998335_health_l_license.do?sys_id={{data.license.sys_id}}"
+        >
+          Edit in native form
+        </a>
+        <a class="lto-detail-button lto-detail-button-secondary" href="?id=lto_dashboard">
+          Back to dashboard
+        </a>
+      </div>
+    </section>
+
+    <section class="lto-detail-metrics">
+      <div class="lto-detail-metric">
+        <div class="lto-detail-metric-label">Issue Date</div>
+        <div class="lto-detail-metric-value" ng-bind="data.license.issue_date || '-'"></div>
+      </div>
+      <div class="lto-detail-metric">
+        <div class="lto-detail-metric-label">Expiry Date</div>
+        <div class="lto-detail-metric-value" ng-bind="data.license.expiry_date || '-'"></div>
+      </div>
+      <div class="lto-detail-metric">
+        <div class="lto-detail-metric-label">Days Before Expiry</div>
+        <div
+          class="lto-detail-metric-value"
+          ng-class="{
+            'lto-detail-metric-danger': data.license.days_before_expiry < 30,
+            'lto-detail-metric-warning': data.license.days_before_expiry >= 30 && data.license.days_before_expiry < 60
+          }"
+          ng-bind="data.license.days_before_expiry + ' days'"
+        ></div>
+      </div>
+      <div class="lto-detail-metric">
+        <div class="lto-detail-metric-label">Renewal Stage</div>
+        <div class="lto-detail-metric-value" ng-bind="data.license.renewal_stage"></div>
+      </div>
+      <div class="lto-detail-metric">
+        <div class="lto-detail-metric-label">Checklist Complete</div>
+        <div class="lto-detail-metric-value" ng-bind="data.license.checklist_pct + '%'"></div>
+      </div>
+    </section>
+
+    <section class="lto-detail-note" ng-if="data.license.notes">
+      <div class="lto-detail-section-eyebrow">Notes</div>
+      <p class="lto-detail-note-copy" ng-bind="data.license.notes"></p>
+    </section>
+
+    <section class="lto-detail-section">
+      <div class="lto-detail-section-header">
+        <div>
+          <div class="lto-detail-section-eyebrow">Workflow</div>
+          <h2 class="lto-detail-section-title">Form checklist</h2>
+        </div>
+        <span class="lto-detail-count" ng-bind="data.checklist.length"></span>
+      </div>
+
+      <div ng-if="data.checklist.length === 0" class="lto-detail-empty-state">
+        No checklist rows yet.
+      </div>
+
+      <div class="lto-detail-checklist" ng-if="data.checklist.length > 0">
+        <div
+          class="lto-detail-check-row"
+          ng-repeat="row in data.checklist"
+          ng-class="{'lto-detail-check-row-complete': row.completed}"
+        >
+          <label class="lto-detail-check-label">
+            <input
+              type="checkbox"
+              ng-checked="row.completed"
+              ng-click="toggleChecklist(row)"
+            />
+            <span class="lto-detail-check-copy">
+              <span class="lto-detail-check-name" ng-bind="row.form_name"></span>
+              <span
+                class="lto-detail-check-purpose"
+                ng-if="row.purpose"
+                ng-bind="row.purpose"
+              ></span>
+            </span>
           </label>
-          <span class="lto-check-meta" ng-if="row.completed">
+          <span class="lto-detail-check-meta" ng-if="row.completed">
             <span ng-bind="row.completed_at"></span>
-            <span ng-if="row.completed_by"> — </span>
-            <span ng-bind="row.completed_by"></span>
+            <span ng-if="row.completed_by">
+              by <span ng-bind="row.completed_by"></span>
+            </span>
           </span>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Evidence -->
-    <div class="lto-card">
-      <div class="lto-card-header">
-        <span class="glyphicon glyphicon-paperclip lto-card-header-icon"></span>
-        Evidence Files
-        <span class="lto-card-count" ng-bind="'(' + data.evidence.length + ')'"></span>
+    <section class="lto-detail-section">
+      <div class="lto-detail-section-header">
+        <div>
+          <div class="lto-detail-section-eyebrow">Evidence</div>
+          <h2 class="lto-detail-section-title">Evidence files</h2>
+        </div>
+        <span class="lto-detail-count" ng-bind="data.evidence.length"></span>
       </div>
-      <div class="lto-card-body">
-        <div class="lto-evidence-helper">
-          <div class="lto-evidence-helper-copy">
-            Upload files on the native License record. New uploads appear here automatically, and file type defaults to Other until an admin updates it.
-          </div>
-          <a class="btn btn-primary btn-sm"
-             ng-href="/x_1998335_health_l_license.do?sys_id={{data.license.sys_id}}">
-            Upload Evidence
-          </a>
+
+      <div class="lto-detail-helper">
+        <div class="lto-detail-helper-copy">
+          Upload files on the native License record. New uploads appear here
+          automatically, and file type defaults to Other until an admin updates
+          it.
         </div>
-        <div ng-if="data.evidence.length === 0" class="lto-empty-state">
-          No evidence uploaded.
-        </div>
-        <table class="table lto-table" ng-if="data.evidence.length > 0">
+        <a
+          class="lto-detail-button lto-detail-button-primary lto-detail-button-small"
+          ng-href="/x_1998335_health_l_license.do?sys_id={{data.license.sys_id}}"
+        >
+          Upload evidence
+        </a>
+      </div>
+
+      <div ng-if="data.evidence.length === 0" class="lto-detail-empty-state">
+        No evidence uploaded.
+      </div>
+
+      <div class="lto-detail-table-wrap" ng-if="data.evidence.length > 0">
+        <table class="table lto-detail-table">
           <thead>
-            <tr><th>File</th><th>Type</th><th>Uploaded By</th><th>Uploaded</th></tr>
+            <tr>
+              <th>File</th>
+              <th>Type</th>
+              <th>Uploaded By</th>
+              <th>Uploaded</th>
+            </tr>
           </thead>
           <tbody>
             <tr ng-repeat="ev in data.evidence">
               <td>
-                <a ng-if="ev.download_url"
-                   ng-href="{{ev.download_url}}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   ng-bind="ev.file_name"></a>
+                <a
+                  ng-if="ev.download_url"
+                  ng-href="{{ev.download_url}}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  ng-bind="ev.file_name"
+                ></a>
                 <span ng-if="!ev.download_url" ng-bind="ev.file_name"></span>
               </td>
-              <td ng-bind="ev.file_type"></td>
+              <td>
+                <span class="lto-detail-pill lto-detail-pill-neutral" ng-bind="ev.file_type"></span>
+              </td>
               <td ng-bind="ev.uploaded_by || 'System'"></td>
               <td ng-bind="ev.uploaded_on"></td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
 
-    <!-- Alerts -->
-    <div class="lto-card">
-      <div class="lto-card-header">
-        <span class="glyphicon glyphicon-bell lto-card-header-icon"></span>
-        Alerts
-        <span class="lto-card-count" ng-bind="'(' + data.alerts.length + ')'"></span>
-      </div>
-      <div class="lto-card-body">
-        <div ng-if="data.alerts.length === 0" class="lto-empty-state">
-          No alerts fired for this license.
+    <section class="lto-detail-section">
+      <div class="lto-detail-section-header">
+        <div>
+          <div class="lto-detail-section-eyebrow">Alert history</div>
+          <h2 class="lto-detail-section-title">Alerts</h2>
         </div>
-        <table class="table lto-table" ng-if="data.alerts.length > 0">
+        <span class="lto-detail-count" ng-bind="data.alerts.length"></span>
+      </div>
+
+      <div ng-if="data.alerts.length === 0" class="lto-detail-empty-state">
+        No alerts fired for this license.
+      </div>
+
+      <div class="lto-detail-table-wrap" ng-if="data.alerts.length > 0">
+        <table class="table lto-detail-table">
           <thead>
-            <tr><th>Threshold (days)</th><th>Channel</th><th>Status</th><th>Sent</th></tr>
+            <tr>
+              <th>Threshold</th>
+              <th>Channel</th>
+              <th>Status</th>
+              <th>Sent</th>
+            </tr>
           </thead>
           <tbody>
             <tr ng-repeat="a in data.alerts">
-              <td ng-bind="a.threshold"></td>
-              <td ng-bind="a.channel"></td>
-              <td ng-bind="a.status"></td>
+              <td>
+                <span
+                  class="lto-detail-pill lto-detail-pill-neutral"
+                  ng-bind="a.threshold + ' days'"
+                ></span>
+              </td>
+              <td>
+                <span
+                  class="lto-detail-pill"
+                  ng-class="{
+                    'lto-detail-pill-primary': a.channel_value === 'email',
+                    'lto-detail-pill-neutral': a.channel_value === 'in_app'
+                  }"
+                  ng-bind="a.channel"
+                ></span>
+              </td>
+              <td>
+                <span
+                  class="lto-detail-pill"
+                  ng-class="{
+                    'lto-detail-pill-success': a.status_value === 'sent',
+                    'lto-detail-pill-danger': a.status_value === 'failed'
+                  }"
+                  ng-bind="a.status"
+                ></span>
+              </td>
               <td ng-bind="a.sent_at"></td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   </div>
 </div>

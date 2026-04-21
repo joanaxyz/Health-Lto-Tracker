@@ -35,7 +35,7 @@
         license_type: lic.x_1998335_health_l_license_type.getDisplayValue(),
         issue_date: lic.x_1998335_health_l_issue_date.getDisplayValue(),
         expiry_date: lic.x_1998335_health_l_expiry_date.getDisplayValue(),
-        days_before_expiry: parseInt(lic.x_1998335_health_l_days_before_expiry, 10),
+        days_before_expiry: parseInt(lic.x_1998335_health_l_days_before_expiry, 10) || 0,
         status: lic.x_1998335_health_l_status.getDisplayValue(),
         status_value: lic.x_1998335_health_l_status.toString(),
         renewal_stage: lic.x_1998335_health_l_renewal_stage.getDisplayValue(),
@@ -82,9 +82,11 @@
     while (al.next()) {
         data.alerts.push({
             sys_id: al.sys_id.toString(),
-            threshold: al.x_1998335_health_l_days_before_expiry.toString(),
+            threshold: parseInt(al.x_1998335_health_l_days_before_expiry, 10) || 0,
             channel: al.x_1998335_health_l_channel.getDisplayValue(),
+            channel_value: al.x_1998335_health_l_channel.toString(),
             status: al.x_1998335_health_l_status.getDisplayValue(),
+            status_value: al.x_1998335_health_l_status.toString(),
             sent_at: al.x_1998335_health_l_sent_at.getDisplayValue(),
         });
     }

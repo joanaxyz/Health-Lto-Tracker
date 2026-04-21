@@ -1,79 +1,156 @@
-.lto-kpi-row {
-  padding: 24px 0 8px;
+.lto-summary {
+  padding: 12px 0 26px;
+  font-family: "Aptos", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
-.lto-kpi-card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 24px 20px 20px;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-  border: 1px solid #eef0f2;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.lto-kpi-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  border-radius: 14px 14px 0 0;
-}
-
-.lto-kpi-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
-}
-
-.lto-kpi-active::before    { background: #22c55e; }
-.lto-kpi-expiring::before  { background: #f59e0b; }
-.lto-kpi-expired::before   { background: #ef4444; }
-.lto-kpi-renewal::before   { background: #3b82f6; }
-
-.lto-kpi-icon-wrap {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
+.lto-summary-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 12px;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 18px;
 }
 
-.lto-kpi-active  .lto-kpi-icon-wrap { background: #f0fdf4; }
-.lto-kpi-expiring .lto-kpi-icon-wrap { background: #fffbeb; }
-.lto-kpi-expired .lto-kpi-icon-wrap  { background: #fef2f2; }
-.lto-kpi-renewal .lto-kpi-icon-wrap  { background: #eff6ff; }
-
-.lto-kpi-icon {
-  font-size: 22px;
-  display: block;
-}
-
-.lto-kpi-active  .lto-kpi-icon { color: #22c55e; }
-.lto-kpi-expiring .lto-kpi-icon { color: #f59e0b; }
-.lto-kpi-expired .lto-kpi-icon  { color: #ef4444; }
-.lto-kpi-renewal .lto-kpi-icon  { color: #3b82f6; }
-
-.lto-kpi-count {
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1;
-  color: #111827;
-  margin-bottom: 6px;
-  letter-spacing: -1px;
-}
-
-.lto-kpi-label {
-  font-size: 12px;
-  color: #6b7280;
+.lto-summary-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-weight: 600;
+  color: #7a878e;
+}
+
+.lto-summary-title {
+  margin: 6px 0 0;
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #10212b;
+}
+
+.lto-summary-note {
+  max-width: 380px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #67757d;
+}
+
+.lto-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.lto-summary-tile {
+  position: relative;
+  width: 100%;
+  min-height: 178px;
+  padding: 20px 20px 18px;
+  border-radius: 24px;
+  border: 1px solid #dbe4e7;
+  background: #fbfcfb;
+  font: inherit;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 8px 20px rgba(12, 22, 27, 0.04);
+}
+
+.lto-summary-tile:hover,
+.lto-summary-tile:focus {
+  transform: translateY(-3px);
+  border-color: #c6d4d8;
+  box-shadow: 0 18px 32px rgba(12, 22, 27, 0.08);
+  outline: none;
+}
+
+.lto-summary-tile::before {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 4px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.lto-summary-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6c7a81;
+}
+
+.lto-summary-count {
+  margin-top: 12px;
+  font-size: 48px;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  color: #10212b;
+}
+
+.lto-summary-description {
+  margin-top: 12px;
+  max-width: 180px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #66757d;
+}
+
+.lto-summary-icon {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  font-size: 18px;
+  color: #9da9af;
+}
+
+.lto-summary-active::before {
+  background: #1f8a57;
+}
+
+.lto-summary-expiring::before {
+  background: #d58a18;
+}
+
+.lto-summary-expired::before {
+  background: #c85656;
+}
+
+.lto-summary-renewal::before {
+  background: #456cb4;
+}
+
+@media (max-width: 991px) {
+  .lto-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .lto-summary {
+    padding-top: 8px;
+  }
+
+  .lto-summary-header {
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .lto-summary-note {
+    margin-top: 10px;
+    max-width: none;
+  }
+
+  .lto-summary-title {
+    font-size: 26px;
+  }
+
+  .lto-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lto-summary-tile {
+    min-height: 0;
+  }
 }

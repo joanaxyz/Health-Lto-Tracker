@@ -1,51 +1,72 @@
-<div class="lto-section-card">
-  <div class="lto-section-header">
-    <div class="lto-section-title">
-      <span class="glyphicon glyphicon-time lto-section-icon"></span>
-      Licenses Expiring Within 90 Days
+<section class="lto-expiring-shell">
+  <div class="lto-expiring-header">
+    <div>
+      <div class="lto-expiring-eyebrow">Risk window</div>
+      <div class="lto-expiring-title-row">
+        <h2 class="lto-expiring-title">Expiring within 90 days</h2>
+        <span class="lto-expiring-count" ng-bind="licenses.length"></span>
+      </div>
+      <p class="lto-expiring-note">
+        Sorted by days remaining so the next renewals surface first.
+      </p>
     </div>
-    <a class="lto-view-all" href="/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_days_before_expiry%3C%3D90%5Ex_1998335_health_l_days_before_expiry%3E%3D0">
-      View All <span class="glyphicon glyphicon-chevron-right"></span>
+    <a
+      class="lto-expiring-link"
+      href="/x_1998335_health_l_license_list.do?sysparm_query=x_1998335_health_l_days_before_expiry%3C%3D90%5Ex_1998335_health_l_days_before_expiry%3E%3D0"
+    >
+      View all <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-  <div class="lto-section-body">
-    <table class="table table-hover lto-table">
+
+  <div class="lto-expiring-table-wrap">
+    <table class="table lto-expiring-table">
       <thead>
         <tr>
+          <th>License</th>
           <th>Facility</th>
-          <th>License Type</th>
-          <th>License #</th>
-          <th>Expiry Date</th>
+          <th>Expires</th>
           <th>Days Left</th>
           <th>Renewal Stage</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="lic in licenses"
-            ng-click="openLicense(lic.sys_id)"
-            class="lto-table-row">
+        <tr
+          ng-repeat="lic in licenses"
+          ng-click="openLicense(lic.sys_id)"
+          class="lto-expiring-row"
+        >
+          <td>
+            <div class="lto-expiring-primary" ng-bind="lic.license_number"></div>
+            <div class="lto-expiring-secondary" ng-bind="lic.license_type"></div>
+          </td>
           <td ng-bind="lic.facility"></td>
-          <td ng-bind="lic.license_type"></td>
-          <td><strong ng-bind="lic.license_number"></strong></td>
           <td ng-bind="lic.expiry_date"></td>
           <td>
-            <span class="label"
-                  ng-class="{
-                    'label-danger':  lic.days_before_expiry < 30,
-                    'label-warning': lic.days_before_expiry >= 30 && lic.days_before_expiry < 60,
-                    'label-info':    lic.days_before_expiry >= 60
-                  }"
-                  ng-bind="lic.days_before_expiry + 'd'"></span>
+            <span
+              class="lto-expiring-pill"
+              ng-class="{
+                'lto-expiring-pill-danger': lic.days_before_expiry < 30,
+                'lto-expiring-pill-warning': lic.days_before_expiry >= 30 && lic.days_before_expiry < 60,
+                'lto-expiring-pill-info': lic.days_before_expiry >= 60
+              }"
+              ng-bind="lic.days_before_expiry + ' days'"
+            ></span>
           </td>
-          <td ng-bind="lic.renewal_stage"></td>
+          <td>
+            <span
+              class="lto-expiring-stage"
+              ng-class="'lto-expiring-stage-' + lic.renewal_stage_value"
+              ng-bind="lic.renewal_stage || 'Not Started'"
+            ></span>
+          </td>
         </tr>
         <tr ng-if="licenses.length === 0">
-          <td colspan="6" class="lto-empty-row">
+          <td colspan="5" class="lto-expiring-empty">
             <span class="glyphicon glyphicon-ok-circle"></span>
-            No licenses expiring within 90 days.
+            No licenses are currently inside the 90-day risk window.
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
+</section>

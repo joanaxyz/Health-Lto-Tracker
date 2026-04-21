@@ -1,30 +1,59 @@
-<div class="lto-hero">
+<section class="lto-hero">
   <div class="container">
-    <div class="lto-hero-content">
-      <h2 class="lto-hero-greeting">Hello, <span ng-bind="user_name"></span></h2>
-      <p class="lto-hero-subtitle">Welcome to the Health LTO Tracker</p>
-      <p class="lto-hero-date">
-        <span class="glyphicon glyphicon-calendar"></span>
-        <span ng-bind="today"></span>
-      </p>
-      <div class="lto-hero-search">
-        <input type="text" placeholder="Search licenses, facilities..." />
-        <span class="glyphicon glyphicon-search lto-search-icon"></span>
+    <div class="lto-hero-shell">
+      <div class="lto-hero-copy">
+        <div class="lto-hero-meta">
+          <div class="lto-hero-eyebrow">Health LTO Tracker</div>
+          <div class="lto-hero-date">
+            <span class="glyphicon glyphicon-calendar"></span>
+            <span ng-bind="today"></span>
+          </div>
+        </div>
+
+        <h1 class="lto-hero-title">Compliance workspace</h1>
+        <p class="lto-hero-lead">
+          Hello, <span ng-bind="user_name"></span>. Monitor renewal risk,
+          checklist readiness, and recent alerts across every tracked facility.
+        </p>
+
+        <div class="lto-hero-links">
+          <a class="lto-hero-link" href="/x_1998335_health_l_license_list.do">
+            All licenses
+          </a>
+          <a class="lto-hero-link" href="/x_1998335_health_l_alert_list.do">
+            Recent alerts
+          </a>
+          <a class="lto-hero-link" href="/x_1998335_health_l_license.do?sys_id=-1">
+            Create license
+          </a>
+        </div>
       </div>
-      <div class="lto-hero-stats">
-        <div class="lto-hero-stat">
-          <div class="lto-hero-stat-number" ng-bind="active"></div>
-          <div class="lto-hero-stat-label">Active</div>
+
+      <aside class="lto-hero-panel">
+        <div class="lto-hero-panel-label">Operational snapshot</div>
+        <div class="lto-hero-panel-value" ng-bind="total_licenses"></div>
+        <div class="lto-hero-panel-caption">
+          licenses across <span ng-bind="facility_count"></span> facilities
         </div>
-        <div class="lto-hero-stat lto-hero-stat-warn">
-          <div class="lto-hero-stat-number" ng-bind="expiring_soon"></div>
-          <div class="lto-hero-stat-label">Expiring Soon</div>
+
+        <div class="lto-hero-metrics">
+          <div class="lto-hero-metric">
+            <div class="lto-hero-metric-label">Needs attention</div>
+            <div class="lto-hero-metric-value" ng-bind="attention_count"></div>
+            <div class="lto-hero-metric-note">Expired or expiring soon</div>
+          </div>
+          <div class="lto-hero-metric">
+            <div class="lto-hero-metric-label">Active</div>
+            <div class="lto-hero-metric-value" ng-bind="active"></div>
+            <div class="lto-hero-metric-note">Outside the 90-day window</div>
+          </div>
+          <div class="lto-hero-metric">
+            <div class="lto-hero-metric-label">Under renewal</div>
+            <div class="lto-hero-metric-value" ng-bind="under_renewal"></div>
+            <div class="lto-hero-metric-note">Currently in workflow</div>
+          </div>
         </div>
-        <div class="lto-hero-stat lto-hero-stat-danger">
-          <div class="lto-hero-stat-number" ng-bind="expired"></div>
-          <div class="lto-hero-stat-label">Expired</div>
-        </div>
-      </div>
+      </aside>
     </div>
   </div>
-</div>
+</section>

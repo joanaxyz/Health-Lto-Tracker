@@ -1,38 +1,50 @@
-<div class="lto-kpi-row row">
-  <div class="col-md-3 col-sm-6">
-    <div class="lto-kpi-card lto-kpi-active" ng-click="goToActive()">
-      <div class="lto-kpi-icon-wrap">
-        <span class="glyphicon glyphicon-ok-circle lto-kpi-icon"></span>
-      </div>
-      <div class="lto-kpi-count" ng-bind="active"></div>
-      <div class="lto-kpi-label">Active Licenses</div>
+<section class="lto-summary">
+  <div class="lto-summary-header">
+    <div>
+      <div class="lto-summary-eyebrow">Portfolio status</div>
+      <h2 class="lto-summary-title">License health</h2>
     </div>
+    <p class="lto-summary-note">
+      Counts refresh on load and each tile links directly to the filtered
+      ServiceNow list.
+    </p>
   </div>
-  <div class="col-md-3 col-sm-6">
-    <div class="lto-kpi-card lto-kpi-expiring" ng-click="goToExpiringSoon()">
-      <div class="lto-kpi-icon-wrap">
-        <span class="glyphicon glyphicon-time lto-kpi-icon"></span>
-      </div>
-      <div class="lto-kpi-count" ng-bind="expiring_soon"></div>
-      <div class="lto-kpi-label">Expiring Soon</div>
-    </div>
+
+  <div class="lto-summary-grid">
+    <button type="button" class="lto-summary-tile lto-summary-active" ng-click="goToActive()">
+      <div class="lto-summary-label">Active</div>
+      <div class="lto-summary-count" ng-bind="active"></div>
+      <div class="lto-summary-description">More than 90 days to expiry</div>
+      <span class="glyphicon glyphicon-ok-circle lto-summary-icon"></span>
+    </button>
+
+    <button
+      type="button"
+      class="lto-summary-tile lto-summary-expiring"
+      ng-click="goToExpiringSoon()"
+    >
+      <div class="lto-summary-label">Expiring Soon</div>
+      <div class="lto-summary-count" ng-bind="expiring_soon"></div>
+      <div class="lto-summary-description">Inside the 90-day risk window</div>
+      <span class="glyphicon glyphicon-time lto-summary-icon"></span>
+    </button>
+
+    <button type="button" class="lto-summary-tile lto-summary-expired" ng-click="goToExpired()">
+      <div class="lto-summary-label">Expired</div>
+      <div class="lto-summary-count" ng-bind="expired"></div>
+      <div class="lto-summary-description">Needs immediate follow-up</div>
+      <span class="glyphicon glyphicon-remove-circle lto-summary-icon"></span>
+    </button>
+
+    <button
+      type="button"
+      class="lto-summary-tile lto-summary-renewal"
+      ng-click="goToRenewal()"
+    >
+      <div class="lto-summary-label">Under Renewal</div>
+      <div class="lto-summary-count" ng-bind="under_renewal"></div>
+      <div class="lto-summary-description">Already in the renewal workflow</div>
+      <span class="glyphicon glyphicon-refresh lto-summary-icon"></span>
+    </button>
   </div>
-  <div class="col-md-3 col-sm-6">
-    <div class="lto-kpi-card lto-kpi-expired" ng-click="goToExpired()">
-      <div class="lto-kpi-icon-wrap">
-        <span class="glyphicon glyphicon-remove-circle lto-kpi-icon"></span>
-      </div>
-      <div class="lto-kpi-count" ng-bind="expired"></div>
-      <div class="lto-kpi-label">Expired</div>
-    </div>
-  </div>
-  <div class="col-md-3 col-sm-6">
-    <div class="lto-kpi-card lto-kpi-renewal" ng-click="goToRenewal()">
-      <div class="lto-kpi-icon-wrap">
-        <span class="glyphicon glyphicon-refresh lto-kpi-icon"></span>
-      </div>
-      <div class="lto-kpi-count" ng-bind="under_renewal"></div>
-      <div class="lto-kpi-label">Under Renewal</div>
-    </div>
-  </div>
-</div>
+</section>

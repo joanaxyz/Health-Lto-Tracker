@@ -1,15 +1,32 @@
-<div class="lto-actions-wrapper">
+<section class="lto-actions-wrapper">
   <div class="container">
-    <div class="lto-actions-inner">
-      <div class="lto-actions-title">Quick Actions</div>
-      <div class="lto-tiles-row">
-        <div class="lto-tile lto-tile-{{tile.color}}" ng-repeat="tile in tiles" ng-click="navigate(tile.url)">
-          <div class="lto-tile-icon-wrap">
+    <div class="lto-actions-shell">
+      <div class="lto-actions-header">
+        <div>
+          <div class="lto-actions-eyebrow">Start from</div>
+          <h2 class="lto-actions-title">Common workflows</h2>
+        </div>
+        <p class="lto-actions-note">
+          Shortcuts into the records and tasks compliance teams use every day.
+        </p>
+      </div>
+
+      <div class="lto-actions-grid">
+        <a
+          class="lto-action-tile lto-action-tile-{{tile.color}}"
+          ng-repeat="tile in tiles"
+          ng-href="{{tile.url}}"
+        >
+          <div class="lto-action-icon">
             <span class="glyphicon glyphicon-{{tile.icon}}"></span>
           </div>
-          <div class="lto-tile-label" ng-bind="tile.label"></div>
-        </div>
+          <div class="lto-action-copy">
+            <div class="lto-action-label" ng-bind="tile.label"></div>
+            <div class="lto-action-description" ng-bind="tile.description"></div>
+          </div>
+          <span class="glyphicon glyphicon-chevron-right lto-action-arrow"></span>
+        </a>
       </div>
     </div>
   </div>
-</div>
+</section>

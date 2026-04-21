@@ -1,67 +1,85 @@
-<div class="lto-section-card">
-  <div class="lto-section-header">
-    <div class="lto-section-title">
-      <span class="glyphicon glyphicon-bell lto-section-icon"></span>
-      Recent Alerts (Last 30 Days)
+<section class="lto-alerts-shell">
+  <div class="lto-alerts-header">
+    <div>
+      <div class="lto-alerts-eyebrow">Recent activity</div>
+      <div class="lto-alerts-title-row">
+        <h2 class="lto-alerts-title">Alerts in the last 30 days</h2>
+        <span class="lto-alerts-count" ng-bind="alerts.length"></span>
+      </div>
+      <p class="lto-alerts-note">
+        Review what was sent, how it was delivered, and which records triggered it.
+      </p>
     </div>
-    <a class="lto-view-all" href="/x_1998335_health_l_alert_list.do">
-      View All <span class="glyphicon glyphicon-chevron-right"></span>
+    <a class="lto-alerts-link" href="/x_1998335_health_l_alert_list.do">
+      View all <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-  <div class="lto-section-body">
-    <table class="table table-hover lto-table">
+
+  <div class="lto-alerts-table-wrap">
+    <table class="table lto-alerts-table">
       <thead>
         <tr>
-          <th>License #</th>
+          <th>License</th>
           <th>Facility</th>
-          <th>License Type</th>
-          <th>Days to Expiry</th>
-          <th>Channel</th>
+          <th>Trigger</th>
+          <th>Delivery</th>
           <th>Status</th>
-          <th>Sent At</th>
+          <th>Sent</th>
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="alert in alerts"
-            ng-click="openLicense(alert.license_sys_id)"
-            class="lto-table-row">
-          <td><strong ng-bind="alert.license_number"></strong></td>
-          <td ng-bind="alert.facility"></td>
-          <td ng-bind="alert.license_type"></td>
+        <tr
+          ng-repeat="alert in alerts"
+          ng-click="openLicense(alert.license_sys_id)"
+          class="lto-alerts-row"
+        >
           <td>
-            <span class="label"
-                  ng-class="{
-                    'label-danger':  alert.days_before_expiry < 30,
-                    'label-warning': alert.days_before_expiry >= 30 && alert.days_before_expiry < 60,
-                    'label-info':    alert.days_before_expiry >= 60
-                  }"
-                  ng-bind="alert.days_before_expiry + 'd'"></span>
+            <div class="lto-alerts-primary" ng-bind="alert.license_number"></div>
           </td>
           <td>
-            <span class="label"
-                  ng-class="{
-                    'label-primary': alert.channel === 'email',
-                    'label-default': alert.channel === 'in_app'
-                  }"
-                  ng-bind="alert.channel === 'email' ? 'Email' : 'In-App'"></span>
+            <div ng-bind="alert.facility"></div>
+            <div class="lto-alerts-secondary" ng-bind="alert.license_type"></div>
           </td>
           <td>
-            <span class="label"
-                  ng-class="{
-                    'label-success': alert.status === 'sent',
-                    'label-danger':  alert.status === 'failed'
-                  }"
-                  ng-bind="alert.status === 'sent' ? 'Sent' : 'Failed'"></span>
+            <span
+              class="lto-alerts-pill"
+              ng-class="{
+                'lto-alerts-pill-danger': alert.days_before_expiry < 30,
+                'lto-alerts-pill-warning': alert.days_before_expiry >= 30 && alert.days_before_expiry < 60,
+                'lto-alerts-pill-info': alert.days_before_expiry >= 60
+              }"
+              ng-bind="alert.days_before_expiry + ' days'"
+            ></span>
+          </td>
+          <td>
+            <span
+              class="lto-alerts-pill"
+              ng-class="{
+                'lto-alerts-pill-primary': alert.channel === 'email',
+                'lto-alerts-pill-neutral': alert.channel === 'in_app'
+              }"
+              ng-bind="alert.channel === 'email' ? 'Email' : 'In-App'"
+            ></span>
+          </td>
+          <td>
+            <span
+              class="lto-alerts-pill"
+              ng-class="{
+                'lto-alerts-pill-success': alert.status === 'sent',
+                'lto-alerts-pill-danger': alert.status === 'failed'
+              }"
+              ng-bind="alert.status === 'sent' ? 'Sent' : 'Failed'"
+            ></span>
           </td>
           <td ng-bind="alert.sent_at"></td>
         </tr>
         <tr ng-if="alerts.length === 0">
-          <td colspan="7" class="lto-empty-row">
+          <td colspan="6" class="lto-alerts-empty">
             <span class="glyphicon glyphicon-bell"></span>
-            No alerts in the last 30 days.
+            No alerts were generated in the last 30 days.
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-</div>
+</section>
